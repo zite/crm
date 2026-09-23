@@ -1,0 +1,260 @@
+@tailwind base;
+@tailwind components;
+@tailwind utilities;
+
+/*
+ * CRM — bone paper, warm ink, and a Prussian-blue pen.
+ *
+ * The ground is warm (never blue-grey), text is warm ink, and one considered
+ * blue is spent a few times a screen: the primary button, links, the focus
+ * ring, the selected row. Everything else is ink on paper. Semantic tones are
+ * raw RGB channels so Tailwind's opacity modifiers composite, and each theme is
+ * re-stepped against its own surfaces — `node scripts/check-contrast.mjs`
+ * measures every pair.
+ */
+@layer base {
+  :root {
+    --paper: 247 245 240;
+    --card: 255 255 255;
+    --sunken: 241 238 232;
+    --hover: 238 235 228;
+    --pressed: 229 225 216;
+    --line: 231 226 217;
+    --line-strong: 212 205 193;
+    /* A form control's border is often the only thing marking it: >= 3:1. */
+    --control: 138 130 117;
+
+    --ink: 29 27 24;
+    --ink-2: 84 79 72;
+    --ink-3: 107 101 92;
+
+    /* Ink for secondary emphasis (dark chips, tooltips, toasts). */
+    --primary: 29 27 24;
+    --on-primary: 251 250 247;
+
+    /* The pen. */
+    --accent: 29 78 128;
+    --on-accent: 255 255 255;
+
+    --success: 28 118 74;
+    --warning: 148 90 0;
+    --danger: 184 50 42;
+    --info: 44 100 140;
+
+    --shadow: 40 32 18;
+    color-scheme: light;
+  }
+
+  .dark {
+    --paper: 21 20 18;
+    --card: 29 28 25;
+    --sunken: 25 24 21;
+    --hover: 40 38 34;
+    --pressed: 50 48 43;
+    --line: 45 43 38;
+    --line-strong: 64 61 55;
+    --control: 112 107 98;
+
+    --ink: 237 234 227;
+    --ink-2: 184 178 167;
+    --ink-3: 162 156 145;
+
+    --primary: 237 234 227;
+    --on-primary: 21 20 18;
+
+    --accent: 138 180 228;
+    --on-accent: 14 22 34;
+
+    --success: 110 200 146;
+    --warning: 232 178 84;
+    --danger: 240 136 124;
+    --info: 128 186 222;
+
+    --shadow: 0 0 0;
+    color-scheme: dark;
+  }
+
+  * {
+    border-color: rgb(var(--line));
+  }
+
+  html,
+  body,
+  #root {
+    height: 100%;
+  }
+
+  body {
+    @apply bg-paper font-sans text-body text-ink antialiased;
+    text-rendering: optimizeLegibility;
+  }
+
+  ::selection {
+    background: rgb(var(--accent) / 0.2);
+  }
+
+  :focus-visible {
+    outline: 2px solid rgb(var(--accent));
+    outline-offset: 2px;
+  }
+
+  input::placeholder,
+  textarea::placeholder {
+    color: rgb(var(--ink-3));
+  }
+
+  * {
+    scrollbar-width: thin;
+    scrollbar-color: rgb(var(--line-strong)) transparent;
+  }
+  ::-webkit-scrollbar {
+    width: 10px;
+    height: 10px;
+  }
+  ::-webkit-scrollbar-thumb {
+    background: rgb(var(--line-strong));
+    border-radius: 99px;
+    border: 3px solid transparent;
+    background-clip: content-box;
+  }
+  ::-webkit-scrollbar-track {
+    background: transparent;
+  }
+}
+
+@layer components {
+  /* A native select's caret is a background image, so it can't take currentColor.
+     It gets ink-3 spelled out per theme instead — hardcoding one value left the
+     dark caret dimmer than every control around it. */
+  .select-caret {
+    background-image: url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 16 16' fill='none' stroke='%236b655c' stroke-width='1.5'%3E%3Cpath d='M4 6l4 4 4-4'/%3E%3C/svg%3E");
+  }
+  .dark .select-caret {
+    background-image: url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 16 16' fill='none' stroke='%23a29c91' stroke-width='1.5'%3E%3Cpath d='M4 6l4 4 4-4'/%3E%3C/svg%3E");
+  }
+
+  .skeleton {
+    background: linear-gradient(90deg, rgb(var(--sunken)) 0%, rgb(var(--hover)) 50%, rgb(var(--sunken)) 100%);
+    background-size: 200% 100%;
+    @apply animate-shimmer rounded-sm;
+  }
+
+  .tabular {
+    font-variant-numeric: tabular-nums;
+  }
+
+  /* A figure strip wraps to two columns on a phone; an odd last cell fills the row
+     rather than sitting alone beside a gap. */
+  @media (max-width: 639px) {
+    [data-strip] > :last-child:nth-child(odd) {
+      grid-column: 1 / -1;
+    }
+  }
+
+  /* Written content: notes, emails, descriptions. */
+  .prose-crm {
+    @apply text-body text-ink;
+    overflow-wrap: anywhere;
+  }
+  .prose-crm > * + * {
+    margin-top: 0.65em;
+  }
+  .prose-crm p {
+    line-height: 1.55;
+  }
+  .prose-crm h1,
+  .prose-crm h2 {
+    @apply font-display text-[22px] leading-7;
+  }
+  .prose-crm h3 {
+    @apply text-title font-semibold;
+  }
+  .prose-crm strong {
+    font-weight: 600;
+  }
+  .prose-crm a {
+    @apply text-accent underline decoration-accent/40 underline-offset-[3px] hover:decoration-accent;
+  }
+  .prose-crm ul,
+  .prose-crm ol {
+    padding-left: 1.35em;
+  }
+  .prose-crm ul {
+    list-style: disc;
+  }
+  .prose-crm ol {
+    list-style: decimal;
+  }
+  .prose-crm li + li {
+    margin-top: 0.2em;
+  }
+  .prose-crm li::marker {
+    color: rgb(var(--ink-3));
+  }
+  .prose-crm blockquote {
+    @apply border-l-2 border-line-strong pl-3 text-ink-2;
+  }
+  .prose-crm code {
+    @apply rounded-xs bg-sunken px-1 py-px font-mono text-[13px];
+  }
+  .prose-crm hr {
+    @apply my-4 border-line;
+  }
+  .prose-crm .mention {
+    @apply rounded-xs bg-accent/10 px-1 font-medium text-accent;
+  }
+
+  /* Toasts are ink receipts in light mode and bone in dark. */
+  [data-sonner-toaster] [data-sonner-toast] {
+    --normal-bg: rgb(var(--primary));
+    --normal-text: rgb(var(--on-primary));
+    --normal-border: transparent;
+    font-family: 'Figtree', ui-sans-serif, system-ui, sans-serif;
+    font-size: 14px;
+    border-radius: 12px !important;
+    box-shadow: 0 16px 40px -14px rgb(var(--shadow) / 0.45) !important;
+  }
+  [data-sonner-toaster] [data-sonner-toast] [data-description] {
+    color: rgb(var(--on-primary) / 0.78) !important;
+  }
+  [data-sonner-toaster] [data-sonner-toast] [data-button] {
+    background: rgb(var(--on-primary)) !important;
+    color: rgb(var(--primary)) !important;
+    font-weight: 600;
+    border-radius: 6px !important;
+  }
+  [data-sonner-toaster] [data-sonner-toast] [data-close-button] {
+    background: rgb(var(--primary)) !important;
+    color: rgb(var(--on-primary)) !important;
+    border-color: rgb(var(--on-primary) / 0.2) !important;
+  }
+}
+
+@layer utilities {
+  .no-scrollbar {
+    scrollbar-width: none;
+  }
+  .no-scrollbar::-webkit-scrollbar {
+    display: none;
+  }
+  .text-balance {
+    text-wrap: balance;
+  }
+  .text-pretty {
+    text-wrap: pretty;
+  }
+}
+
+@layer base {
+  /* Someone who has asked their system for less motion gets none of ours. */
+  @media (prefers-reduced-motion: reduce) {
+    *,
+    *::before,
+    *::after {
+      animation-duration: 0.01ms !important;
+      animation-iteration-count: 1 !important;
+      transition-duration: 0.01ms !important;
+      scroll-behavior: auto !important;
+    }
+  }
+}

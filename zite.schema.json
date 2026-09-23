@@ -1,0 +1,5091 @@
+{
+  "tables": [
+    {
+      "id": "t8sNt6f9YG5",
+      "sdkName": "members",
+      "name": "Members",
+      "primaryFieldId": "fwzFQxbCboY",
+      "fields": [
+        {
+          "id": "fwzFQxbCboY",
+          "sdkName": "name",
+          "definition": {
+            "name": "Name",
+            "type": "single_line_text",
+            "template": {}
+          }
+        },
+        {
+          "id": "f4vKDyVpnYD",
+          "sdkName": "email",
+          "definition": {
+            "name": "Email",
+            "type": "email",
+            "template": {}
+          }
+        },
+        {
+          "id": "fm9NFhws4y4",
+          "sdkName": "role",
+          "definition": {
+            "name": "Role",
+            "type": "single_select",
+            "template": {
+              "options": [
+                {
+                  "value": "bL21",
+                  "label": "Admin",
+                  "color": "purple"
+                },
+                {
+                  "value": "eXS8",
+                  "label": "Manager",
+                  "color": "orange"
+                },
+                {
+                  "value": "cBpi",
+                  "label": "Rep",
+                  "color": "blue"
+                },
+                {
+                  "value": "vT1e",
+                  "label": "Viewer",
+                  "color": "gray"
+                }
+              ],
+              "disableColors": false
+            }
+          }
+        },
+        {
+          "id": "foE2g3eYrut",
+          "sdkName": "status",
+          "definition": {
+            "name": "Status",
+            "type": "single_select",
+            "template": {
+              "options": [
+                {
+                  "value": "c5Uy",
+                  "label": "Active",
+                  "color": "purple"
+                },
+                {
+                  "value": "jNdU",
+                  "label": "Invited",
+                  "color": "orange"
+                },
+                {
+                  "value": "pvwp",
+                  "label": "Deactivated",
+                  "color": "blue"
+                }
+              ],
+              "disableColors": false
+            }
+          }
+        },
+        {
+          "id": "feAo9dDVH3o",
+          "sdkName": "title",
+          "definition": {
+            "name": "Title",
+            "type": "single_line_text",
+            "template": {}
+          }
+        },
+        {
+          "id": "fep5HgDi2MU",
+          "sdkName": "teamId",
+          "definition": {
+            "name": "Team Id",
+            "type": "single_line_text",
+            "template": {}
+          }
+        },
+        {
+          "id": "f6D9StLichM",
+          "sdkName": "phone",
+          "definition": {
+            "name": "Phone",
+            "type": "phone_number",
+            "template": {}
+          }
+        },
+        {
+          "id": "f4SPQEg8wyW",
+          "sdkName": "color",
+          "definition": {
+            "name": "Color",
+            "type": "single_line_text",
+            "template": {}
+          }
+        },
+        {
+          "id": "fr9Lbw6DToU",
+          "sdkName": "avatarUrl",
+          "definition": {
+            "name": "Avatar Url",
+            "type": "url",
+            "template": {}
+          }
+        },
+        {
+          "id": "fhvyEonvHaF",
+          "sdkName": "timezone",
+          "definition": {
+            "name": "Timezone",
+            "type": "single_line_text",
+            "template": {}
+          }
+        },
+        {
+          "id": "f1gjSaJs2y5",
+          "sdkName": "emailSignature",
+          "definition": {
+            "name": "Email Signature",
+            "type": "long_text",
+            "template": {}
+          }
+        },
+        {
+          "id": "faX2jJDLqzP",
+          "sdkName": "preferences",
+          "definition": {
+            "name": "Preferences",
+            "type": "long_text",
+            "template": {}
+          }
+        },
+        {
+          "id": "f61MvCj9qAT",
+          "sdkName": "lastSeenAt",
+          "definition": {
+            "name": "Last Seen At",
+            "type": "datetime",
+            "template": {
+              "timezone": "",
+              "dateFormat": "local",
+              "timeFormat": "12h",
+              "displayTimeZone": false
+            }
+          }
+        }
+      ]
+    },
+    {
+      "id": "trwaoQFQZ59",
+      "sdkName": "teams",
+      "name": "Teams",
+      "primaryFieldId": "frzDhY6Ppup",
+      "fields": [
+        {
+          "id": "frzDhY6Ppup",
+          "sdkName": "name",
+          "definition": {
+            "name": "Name",
+            "type": "single_line_text",
+            "template": {}
+          }
+        },
+        {
+          "id": "f2xCCYGaMNc",
+          "sdkName": "description",
+          "definition": {
+            "name": "Description",
+            "type": "long_text",
+            "template": {}
+          }
+        },
+        {
+          "id": "fsKtZScwyM5",
+          "sdkName": "leadId",
+          "definition": {
+            "name": "Lead Id",
+            "type": "single_line_text",
+            "template": {}
+          }
+        },
+        {
+          "id": "fqT348aCDdh",
+          "sdkName": "color",
+          "definition": {
+            "name": "Color",
+            "type": "single_line_text",
+            "template": {}
+          }
+        }
+      ]
+    },
+    {
+      "id": "tu3Ho92k8XB",
+      "sdkName": "companies",
+      "name": "Companies",
+      "primaryFieldId": "fsDoL7DisRj",
+      "fields": [
+        {
+          "id": "fsDoL7DisRj",
+          "sdkName": "name",
+          "definition": {
+            "name": "Name",
+            "type": "single_line_text",
+            "template": {}
+          }
+        },
+        {
+          "id": "fgbNpSaueN3",
+          "sdkName": "domain",
+          "definition": {
+            "name": "Domain",
+            "type": "single_line_text",
+            "template": {}
+          }
+        },
+        {
+          "id": "f2UnZvppT4h",
+          "sdkName": "website",
+          "definition": {
+            "name": "Website",
+            "type": "url",
+            "template": {}
+          }
+        },
+        {
+          "id": "f5H54hUZGMy",
+          "sdkName": "industry",
+          "definition": {
+            "name": "Industry",
+            "type": "single_line_text",
+            "template": {}
+          }
+        },
+        {
+          "id": "f2kF8BqrC43",
+          "sdkName": "type",
+          "definition": {
+            "name": "Type",
+            "type": "single_select",
+            "template": {
+              "options": [
+                {
+                  "value": "gw3v",
+                  "label": "Prospect",
+                  "color": "purple"
+                },
+                {
+                  "value": "agnt",
+                  "label": "Customer",
+                  "color": "orange"
+                },
+                {
+                  "value": "81xe",
+                  "label": "Partner",
+                  "color": "blue"
+                },
+                {
+                  "value": "h1hb",
+                  "label": "Former Customer",
+                  "color": "gray"
+                },
+                {
+                  "value": "tkoc",
+                  "label": "Other",
+                  "color": "red"
+                }
+              ],
+              "disableColors": false
+            }
+          }
+        },
+        {
+          "id": "f6oGoqrnRcv",
+          "sdkName": "employees",
+          "definition": {
+            "name": "Employees",
+            "type": "number",
+            "template": {
+              "numberFormat": "local",
+              "decimalPlaces": 0
+            }
+          }
+        },
+        {
+          "id": "fsnmPiUtXFS",
+          "sdkName": "annualRevenue",
+          "definition": {
+            "name": "Annual Revenue",
+            "type": "currency",
+            "template": {
+              "numberFormat": "local",
+              "decimalPlaces": 0,
+              "currencySymbol": "$"
+            }
+          }
+        },
+        {
+          "id": "fwULeXcZtBe",
+          "sdkName": "ownerId",
+          "definition": {
+            "name": "Owner Id",
+            "type": "single_line_text",
+            "template": {}
+          }
+        },
+        {
+          "id": "fwooGSrAvUk",
+          "sdkName": "parentCompanyId",
+          "definition": {
+            "name": "Parent Company Id",
+            "type": "single_line_text",
+            "template": {}
+          }
+        },
+        {
+          "id": "f1qKcpSMRJD",
+          "sdkName": "phone",
+          "definition": {
+            "name": "Phone",
+            "type": "phone_number",
+            "template": {}
+          }
+        },
+        {
+          "id": "fpGjWdpYVCw",
+          "sdkName": "linkedinUrl",
+          "definition": {
+            "name": "Linkedin Url",
+            "type": "url",
+            "template": {}
+          }
+        },
+        {
+          "id": "fn7YNAXoKSE",
+          "sdkName": "address",
+          "definition": {
+            "name": "Address",
+            "type": "single_line_text",
+            "template": {}
+          }
+        },
+        {
+          "id": "f2hrMHQKFTC",
+          "sdkName": "city",
+          "definition": {
+            "name": "City",
+            "type": "single_line_text",
+            "template": {}
+          }
+        },
+        {
+          "id": "f4Xy8QSPPJq",
+          "sdkName": "region",
+          "definition": {
+            "name": "Region",
+            "type": "single_line_text",
+            "template": {}
+          }
+        },
+        {
+          "id": "fxrg7Uuyujh",
+          "sdkName": "postalCode",
+          "definition": {
+            "name": "Postal Code",
+            "type": "single_line_text",
+            "template": {}
+          }
+        },
+        {
+          "id": "fouGkKAHZDY",
+          "sdkName": "country",
+          "definition": {
+            "name": "Country",
+            "type": "single_line_text",
+            "template": {}
+          }
+        },
+        {
+          "id": "fxiQvC7C6Sq",
+          "sdkName": "description",
+          "definition": {
+            "name": "Description",
+            "type": "long_text",
+            "template": {}
+          }
+        },
+        {
+          "id": "foCR7WEepCa",
+          "sdkName": "source",
+          "definition": {
+            "name": "Source",
+            "type": "single_line_text",
+            "template": {}
+          }
+        },
+        {
+          "id": "fn7X6UdEixh",
+          "sdkName": "tagIds",
+          "definition": {
+            "name": "Tag Ids",
+            "type": "long_text",
+            "template": {}
+          }
+        },
+        {
+          "id": "fdt6VQxWcaV",
+          "sdkName": "customFields",
+          "definition": {
+            "name": "Custom Fields",
+            "type": "long_text",
+            "template": {}
+          }
+        },
+        {
+          "id": "fsjcUSh1XPG",
+          "sdkName": "logoUrl",
+          "definition": {
+            "name": "Logo Url",
+            "type": "url",
+            "template": {}
+          }
+        },
+        {
+          "id": "fty7JQae2JB",
+          "sdkName": "customerSince",
+          "definition": {
+            "name": "Customer Since",
+            "type": "date",
+            "template": {
+              "dateFormat": "local"
+            }
+          }
+        },
+        {
+          "id": "fm7gkiXscoy",
+          "sdkName": "lastActivityAt",
+          "definition": {
+            "name": "Last Activity At",
+            "type": "datetime",
+            "template": {
+              "timezone": "",
+              "dateFormat": "local",
+              "timeFormat": "12h",
+              "displayTimeZone": false
+            }
+          }
+        },
+        {
+          "id": "f36bkXULTMc",
+          "sdkName": "archived",
+          "definition": {
+            "name": "Archived",
+            "type": "checkbox",
+            "template": {}
+          }
+        },
+        {
+          "id": "ffrBBner4m1",
+          "sdkName": "importId",
+          "definition": {
+            "name": "Import Id",
+            "type": "single_line_text",
+            "template": {}
+          }
+        }
+      ]
+    },
+    {
+      "id": "trQzftGagdr",
+      "sdkName": "contacts",
+      "name": "Contacts",
+      "primaryFieldId": "f2TTYHSGghe",
+      "fields": [
+        {
+          "id": "f2TTYHSGghe",
+          "sdkName": "name",
+          "definition": {
+            "name": "Name",
+            "type": "single_line_text",
+            "template": {}
+          }
+        },
+        {
+          "id": "fcAVgAv9YTW",
+          "sdkName": "firstName",
+          "definition": {
+            "name": "First Name",
+            "type": "single_line_text",
+            "template": {}
+          }
+        },
+        {
+          "id": "fmidg8kFE4o",
+          "sdkName": "lastName",
+          "definition": {
+            "name": "Last Name",
+            "type": "single_line_text",
+            "template": {}
+          }
+        },
+        {
+          "id": "f89vYZkaErB",
+          "sdkName": "email",
+          "definition": {
+            "name": "Email",
+            "type": "email",
+            "template": {}
+          }
+        },
+        {
+          "id": "frdAKUq8wmf",
+          "sdkName": "phone",
+          "definition": {
+            "name": "Phone",
+            "type": "phone_number",
+            "template": {}
+          }
+        },
+        {
+          "id": "fj9zisaE4Yj",
+          "sdkName": "mobile",
+          "definition": {
+            "name": "Mobile",
+            "type": "phone_number",
+            "template": {}
+          }
+        },
+        {
+          "id": "ffG3m6wGbVG",
+          "sdkName": "title",
+          "definition": {
+            "name": "Title",
+            "type": "single_line_text",
+            "template": {}
+          }
+        },
+        {
+          "id": "fcGrVe2dSCx",
+          "sdkName": "companyId",
+          "definition": {
+            "name": "Company Id",
+            "type": "single_line_text",
+            "template": {}
+          }
+        },
+        {
+          "id": "ffpTkNyeYY8",
+          "sdkName": "ownerId",
+          "definition": {
+            "name": "Owner Id",
+            "type": "single_line_text",
+            "template": {}
+          }
+        },
+        {
+          "id": "fjhfukwyVph",
+          "sdkName": "source",
+          "definition": {
+            "name": "Source",
+            "type": "single_line_text",
+            "template": {}
+          }
+        },
+        {
+          "id": "fpK25dfdqjK",
+          "sdkName": "linkedinUrl",
+          "definition": {
+            "name": "Linkedin Url",
+            "type": "url",
+            "template": {}
+          }
+        },
+        {
+          "id": "frrZxthGFGo",
+          "sdkName": "city",
+          "definition": {
+            "name": "City",
+            "type": "single_line_text",
+            "template": {}
+          }
+        },
+        {
+          "id": "fonWFv54uYW",
+          "sdkName": "country",
+          "definition": {
+            "name": "Country",
+            "type": "single_line_text",
+            "template": {}
+          }
+        },
+        {
+          "id": "fhrERFMT3wg",
+          "sdkName": "timezone",
+          "definition": {
+            "name": "Timezone",
+            "type": "single_line_text",
+            "template": {}
+          }
+        },
+        {
+          "id": "f5AQ1CRHQSw",
+          "sdkName": "background",
+          "definition": {
+            "name": "Background",
+            "type": "long_text",
+            "template": {}
+          }
+        },
+        {
+          "id": "f7jYSE6gmrD",
+          "sdkName": "doNotContact",
+          "definition": {
+            "name": "Do Not Contact",
+            "type": "checkbox",
+            "template": {}
+          }
+        },
+        {
+          "id": "f2MjxLABcUc",
+          "sdkName": "unsubscribedAt",
+          "definition": {
+            "name": "Unsubscribed At",
+            "type": "datetime",
+            "template": {
+              "timezone": "",
+              "dateFormat": "local",
+              "timeFormat": "12h",
+              "displayTimeZone": false
+            }
+          }
+        },
+        {
+          "id": "f2ZuZu4zUZT",
+          "sdkName": "unsubscribeToken",
+          "definition": {
+            "name": "Unsubscribe Token",
+            "type": "single_line_text",
+            "template": {}
+          }
+        },
+        {
+          "id": "fbsY1sHn6xK",
+          "sdkName": "tagIds",
+          "definition": {
+            "name": "Tag Ids",
+            "type": "long_text",
+            "template": {}
+          }
+        },
+        {
+          "id": "fsbgQHuxNgc",
+          "sdkName": "customFields",
+          "definition": {
+            "name": "Custom Fields",
+            "type": "long_text",
+            "template": {}
+          }
+        },
+        {
+          "id": "ffeJg8hsb6c",
+          "sdkName": "avatarUrl",
+          "definition": {
+            "name": "Avatar Url",
+            "type": "url",
+            "template": {}
+          }
+        },
+        {
+          "id": "f6kusiAkwk3",
+          "sdkName": "lastActivityAt",
+          "definition": {
+            "name": "Last Activity At",
+            "type": "datetime",
+            "template": {
+              "timezone": "",
+              "dateFormat": "local",
+              "timeFormat": "12h",
+              "displayTimeZone": false
+            }
+          }
+        },
+        {
+          "id": "fvZjdm9hZWJ",
+          "sdkName": "lastContactedAt",
+          "definition": {
+            "name": "Last Contacted At",
+            "type": "datetime",
+            "template": {
+              "timezone": "",
+              "dateFormat": "local",
+              "timeFormat": "12h",
+              "displayTimeZone": false
+            }
+          }
+        },
+        {
+          "id": "f2V972YUF3a",
+          "sdkName": "archived",
+          "definition": {
+            "name": "Archived",
+            "type": "checkbox",
+            "template": {}
+          }
+        },
+        {
+          "id": "ffzo44HjaVi",
+          "sdkName": "importId",
+          "definition": {
+            "name": "Import Id",
+            "type": "single_line_text",
+            "template": {}
+          }
+        }
+      ]
+    },
+    {
+      "id": "t91QetptDHD",
+      "sdkName": "leads",
+      "name": "Leads",
+      "primaryFieldId": "fd7MkPWxSaA",
+      "fields": [
+        {
+          "id": "fd7MkPWxSaA",
+          "sdkName": "name",
+          "definition": {
+            "name": "Name",
+            "type": "single_line_text",
+            "template": {}
+          }
+        },
+        {
+          "id": "fj6gYN1JPX4",
+          "sdkName": "firstName",
+          "definition": {
+            "name": "First Name",
+            "type": "single_line_text",
+            "template": {}
+          }
+        },
+        {
+          "id": "fucTVDqBiKn",
+          "sdkName": "lastName",
+          "definition": {
+            "name": "Last Name",
+            "type": "single_line_text",
+            "template": {}
+          }
+        },
+        {
+          "id": "fka3UW3Yiuk",
+          "sdkName": "email",
+          "definition": {
+            "name": "Email",
+            "type": "email",
+            "template": {}
+          }
+        },
+        {
+          "id": "f4NrvjCqdcW",
+          "sdkName": "phone",
+          "definition": {
+            "name": "Phone",
+            "type": "phone_number",
+            "template": {}
+          }
+        },
+        {
+          "id": "f9fXbh2xVL4",
+          "sdkName": "title",
+          "definition": {
+            "name": "Title",
+            "type": "single_line_text",
+            "template": {}
+          }
+        },
+        {
+          "id": "ff5furC195Q",
+          "sdkName": "companyName",
+          "definition": {
+            "name": "Company Name",
+            "type": "single_line_text",
+            "template": {}
+          }
+        },
+        {
+          "id": "fqCSCVMuEQb",
+          "sdkName": "website",
+          "definition": {
+            "name": "Website",
+            "type": "url",
+            "template": {}
+          }
+        },
+        {
+          "id": "fdT8XA4YNMo",
+          "sdkName": "employees",
+          "definition": {
+            "name": "Employees",
+            "type": "number",
+            "template": {
+              "numberFormat": "local",
+              "decimalPlaces": 0
+            }
+          }
+        },
+        {
+          "id": "fkzPdi5gjXK",
+          "sdkName": "industry",
+          "definition": {
+            "name": "Industry",
+            "type": "single_line_text",
+            "template": {}
+          }
+        },
+        {
+          "id": "f63deU4q1Sa",
+          "sdkName": "country",
+          "definition": {
+            "name": "Country",
+            "type": "single_line_text",
+            "template": {}
+          }
+        },
+        {
+          "id": "f8TQjnH1LVJ",
+          "sdkName": "source",
+          "definition": {
+            "name": "Source",
+            "type": "single_line_text",
+            "template": {}
+          }
+        },
+        {
+          "id": "fpwzVDij9UL",
+          "sdkName": "sourceDetail",
+          "definition": {
+            "name": "Source Detail",
+            "type": "single_line_text",
+            "template": {}
+          }
+        },
+        {
+          "id": "fhigUPyAQmZ",
+          "sdkName": "status",
+          "definition": {
+            "name": "Status",
+            "type": "single_select",
+            "template": {
+              "options": [
+                {
+                  "value": "iCJr",
+                  "label": "New",
+                  "color": "purple"
+                },
+                {
+                  "value": "3qcv",
+                  "label": "Working",
+                  "color": "orange"
+                },
+                {
+                  "value": "vKV8",
+                  "label": "Nurturing",
+                  "color": "blue"
+                },
+                {
+                  "value": "398U",
+                  "label": "Qualified",
+                  "color": "gray"
+                },
+                {
+                  "value": "aLgY",
+                  "label": "Disqualified",
+                  "color": "red"
+                }
+              ],
+              "disableColors": false
+            }
+          }
+        },
+        {
+          "id": "f2dSj6q9r4H",
+          "sdkName": "score",
+          "definition": {
+            "name": "Score",
+            "type": "number",
+            "template": {
+              "numberFormat": "local",
+              "decimalPlaces": 0
+            }
+          }
+        },
+        {
+          "id": "fwhEPQ3R1CX",
+          "sdkName": "ownerId",
+          "definition": {
+            "name": "Owner Id",
+            "type": "single_line_text",
+            "template": {}
+          }
+        },
+        {
+          "id": "fvR2VvCKp5E",
+          "sdkName": "message",
+          "definition": {
+            "name": "Message",
+            "type": "long_text",
+            "template": {}
+          }
+        },
+        {
+          "id": "ffASnPbDvLm",
+          "sdkName": "disqualifyReason",
+          "definition": {
+            "name": "Disqualify Reason",
+            "type": "single_line_text",
+            "template": {}
+          }
+        },
+        {
+          "id": "ff32ceB7T26",
+          "sdkName": "convertedAt",
+          "definition": {
+            "name": "Converted At",
+            "type": "datetime",
+            "template": {
+              "timezone": "",
+              "dateFormat": "local",
+              "timeFormat": "12h",
+              "displayTimeZone": false
+            }
+          }
+        },
+        {
+          "id": "fwrEcDL7rVq",
+          "sdkName": "convertedContactId",
+          "definition": {
+            "name": "Converted Contact Id",
+            "type": "single_line_text",
+            "template": {}
+          }
+        },
+        {
+          "id": "fhZR46m4CuJ",
+          "sdkName": "convertedCompanyId",
+          "definition": {
+            "name": "Converted Company Id",
+            "type": "single_line_text",
+            "template": {}
+          }
+        },
+        {
+          "id": "frhi3YHtcSx",
+          "sdkName": "convertedDealId",
+          "definition": {
+            "name": "Converted Deal Id",
+            "type": "single_line_text",
+            "template": {}
+          }
+        },
+        {
+          "id": "fdEh8RjMF6r",
+          "sdkName": "formId",
+          "definition": {
+            "name": "Form Id",
+            "type": "single_line_text",
+            "template": {}
+          }
+        },
+        {
+          "id": "f12xZS7LNTC",
+          "sdkName": "utmSource",
+          "definition": {
+            "name": "Utm Source",
+            "type": "single_line_text",
+            "template": {}
+          }
+        },
+        {
+          "id": "f1HGdsxi5gp",
+          "sdkName": "utmMedium",
+          "definition": {
+            "name": "Utm Medium",
+            "type": "single_line_text",
+            "template": {}
+          }
+        },
+        {
+          "id": "fwa7wgMxt6Z",
+          "sdkName": "utmCampaign",
+          "definition": {
+            "name": "Utm Campaign",
+            "type": "single_line_text",
+            "template": {}
+          }
+        },
+        {
+          "id": "fdV2DXJ4qYA",
+          "sdkName": "tagIds",
+          "definition": {
+            "name": "Tag Ids",
+            "type": "long_text",
+            "template": {}
+          }
+        },
+        {
+          "id": "fvtsVZzg879",
+          "sdkName": "customFields",
+          "definition": {
+            "name": "Custom Fields",
+            "type": "long_text",
+            "template": {}
+          }
+        },
+        {
+          "id": "f3ifEyDoVGp",
+          "sdkName": "receivedAt",
+          "definition": {
+            "name": "Received At",
+            "type": "datetime",
+            "template": {
+              "timezone": "",
+              "dateFormat": "local",
+              "timeFormat": "12h",
+              "displayTimeZone": false
+            }
+          }
+        },
+        {
+          "id": "f87DvHAcaFe",
+          "sdkName": "firstResponseAt",
+          "definition": {
+            "name": "First Response At",
+            "type": "datetime",
+            "template": {
+              "timezone": "",
+              "dateFormat": "local",
+              "timeFormat": "12h",
+              "displayTimeZone": false
+            }
+          }
+        },
+        {
+          "id": "fnRHoojQE7f",
+          "sdkName": "lastActivityAt",
+          "definition": {
+            "name": "Last Activity At",
+            "type": "datetime",
+            "template": {
+              "timezone": "",
+              "dateFormat": "local",
+              "timeFormat": "12h",
+              "displayTimeZone": false
+            }
+          }
+        },
+        {
+          "id": "f8NsbHGMA4W",
+          "sdkName": "importId",
+          "definition": {
+            "name": "Import Id",
+            "type": "single_line_text",
+            "template": {}
+          }
+        }
+      ]
+    },
+    {
+      "id": "trh7ws1b24Y",
+      "sdkName": "pipelines",
+      "name": "Pipelines",
+      "primaryFieldId": "f5E3xfnyxtw",
+      "fields": [
+        {
+          "id": "f5E3xfnyxtw",
+          "sdkName": "name",
+          "definition": {
+            "name": "Name",
+            "type": "single_line_text",
+            "template": {}
+          }
+        },
+        {
+          "id": "fxb22Mrnrmv",
+          "sdkName": "description",
+          "definition": {
+            "name": "Description",
+            "type": "long_text",
+            "template": {}
+          }
+        },
+        {
+          "id": "fd5TpXEvFK7",
+          "sdkName": "position",
+          "definition": {
+            "name": "Position",
+            "type": "number",
+            "template": {
+              "numberFormat": "local",
+              "decimalPlaces": 0
+            }
+          }
+        },
+        {
+          "id": "fnw2u7suMmy",
+          "sdkName": "isDefault",
+          "definition": {
+            "name": "Is Default",
+            "type": "checkbox",
+            "template": {}
+          }
+        },
+        {
+          "id": "fv4HDAKYQC3",
+          "sdkName": "archived",
+          "definition": {
+            "name": "Archived",
+            "type": "checkbox",
+            "template": {}
+          }
+        }
+      ]
+    },
+    {
+      "id": "t7cZwhTBNh6",
+      "sdkName": "stages",
+      "name": "Stages",
+      "primaryFieldId": "fptdPpPpSXD",
+      "fields": [
+        {
+          "id": "fptdPpPpSXD",
+          "sdkName": "name",
+          "definition": {
+            "name": "Name",
+            "type": "single_line_text",
+            "template": {}
+          }
+        },
+        {
+          "id": "faHstQggruT",
+          "sdkName": "pipelineId",
+          "definition": {
+            "name": "Pipeline Id",
+            "type": "single_line_text",
+            "template": {}
+          }
+        },
+        {
+          "id": "ffWxAeiS9U1",
+          "sdkName": "position",
+          "definition": {
+            "name": "Position",
+            "type": "number",
+            "template": {
+              "numberFormat": "local",
+              "decimalPlaces": 0
+            }
+          }
+        },
+        {
+          "id": "f4nrV9YhQ6Z",
+          "sdkName": "probability",
+          "definition": {
+            "name": "Probability",
+            "type": "number",
+            "template": {
+              "numberFormat": "local",
+              "decimalPlaces": 0
+            }
+          }
+        },
+        {
+          "id": "fhjqGrFNz93",
+          "sdkName": "kind",
+          "definition": {
+            "name": "Kind",
+            "type": "single_select",
+            "template": {
+              "options": [
+                {
+                  "value": "tAJX",
+                  "label": "Open",
+                  "color": "purple"
+                },
+                {
+                  "value": "i5Kx",
+                  "label": "Won",
+                  "color": "orange"
+                },
+                {
+                  "value": "8tet",
+                  "label": "Lost",
+                  "color": "blue"
+                }
+              ],
+              "disableColors": false
+            }
+          }
+        },
+        {
+          "id": "fium2b8Y4n5",
+          "sdkName": "rottingDays",
+          "definition": {
+            "name": "Rotting Days",
+            "type": "number",
+            "template": {
+              "numberFormat": "local",
+              "decimalPlaces": 0
+            }
+          }
+        },
+        {
+          "id": "fkk1dNfjQbZ",
+          "sdkName": "guidance",
+          "definition": {
+            "name": "Guidance",
+            "type": "long_text",
+            "template": {}
+          }
+        },
+        {
+          "id": "f4mWoGv41nP",
+          "sdkName": "archived",
+          "definition": {
+            "name": "Archived",
+            "type": "checkbox",
+            "template": {}
+          }
+        }
+      ]
+    },
+    {
+      "id": "tqcuPCtTfwU",
+      "sdkName": "deals",
+      "name": "Deals",
+      "primaryFieldId": "fstscYgFQ6Q",
+      "fields": [
+        {
+          "id": "fstscYgFQ6Q",
+          "sdkName": "name",
+          "definition": {
+            "name": "Name",
+            "type": "single_line_text",
+            "template": {}
+          }
+        },
+        {
+          "id": "fwqwtjxJoRD",
+          "sdkName": "companyId",
+          "definition": {
+            "name": "Company Id",
+            "type": "single_line_text",
+            "template": {}
+          }
+        },
+        {
+          "id": "fkN9Y5NnZto",
+          "sdkName": "contactId",
+          "definition": {
+            "name": "Contact Id",
+            "type": "single_line_text",
+            "template": {}
+          }
+        },
+        {
+          "id": "ft2M495ZARN",
+          "sdkName": "pipelineId",
+          "definition": {
+            "name": "Pipeline Id",
+            "type": "single_line_text",
+            "template": {}
+          }
+        },
+        {
+          "id": "f5fhFgViQvm",
+          "sdkName": "stageId",
+          "definition": {
+            "name": "Stage Id",
+            "type": "single_line_text",
+            "template": {}
+          }
+        },
+        {
+          "id": "fiDo6jZV2d6",
+          "sdkName": "ownerId",
+          "definition": {
+            "name": "Owner Id",
+            "type": "single_line_text",
+            "template": {}
+          }
+        },
+        {
+          "id": "f1C7KUXS2ED",
+          "sdkName": "amount",
+          "definition": {
+            "name": "Amount",
+            "type": "currency",
+            "template": {
+              "numberFormat": "local",
+              "decimalPlaces": 2,
+              "currencySymbol": "$"
+            }
+          }
+        },
+        {
+          "id": "f9QJ6uUpiuH",
+          "sdkName": "closeDate",
+          "definition": {
+            "name": "Close Date",
+            "type": "date",
+            "template": {
+              "dateFormat": "local"
+            }
+          }
+        },
+        {
+          "id": "fxxPN13Fs1c",
+          "sdkName": "status",
+          "definition": {
+            "name": "Status",
+            "type": "single_select",
+            "template": {
+              "options": [
+                {
+                  "value": "5t9Y",
+                  "label": "Open",
+                  "color": "purple"
+                },
+                {
+                  "value": "ib8C",
+                  "label": "Won",
+                  "color": "orange"
+                },
+                {
+                  "value": "6urH",
+                  "label": "Lost",
+                  "color": "blue"
+                }
+              ],
+              "disableColors": false
+            }
+          }
+        },
+        {
+          "id": "fbaY2ukQAb1",
+          "sdkName": "probability",
+          "definition": {
+            "name": "Probability",
+            "type": "number",
+            "template": {
+              "numberFormat": "local",
+              "decimalPlaces": 0
+            }
+          }
+        },
+        {
+          "id": "f4AfM5acwPu",
+          "sdkName": "forecastCategory",
+          "definition": {
+            "name": "Forecast Category",
+            "type": "single_select",
+            "template": {
+              "options": [
+                {
+                  "value": "p3XP",
+                  "label": "Pipeline",
+                  "color": "purple"
+                },
+                {
+                  "value": "5uUY",
+                  "label": "Best Case",
+                  "color": "orange"
+                },
+                {
+                  "value": "ctPJ",
+                  "label": "Commit",
+                  "color": "blue"
+                },
+                {
+                  "value": "vCQn",
+                  "label": "Closed",
+                  "color": "gray"
+                },
+                {
+                  "value": "5Mhk",
+                  "label": "Omitted",
+                  "color": "red"
+                }
+              ],
+              "disableColors": false
+            }
+          }
+        },
+        {
+          "id": "fiiZmr99eB9",
+          "sdkName": "type",
+          "definition": {
+            "name": "Type",
+            "type": "single_select",
+            "template": {
+              "options": [
+                {
+                  "value": "49kB",
+                  "label": "New Business",
+                  "color": "purple"
+                },
+                {
+                  "value": "4NRd",
+                  "label": "Expansion",
+                  "color": "orange"
+                },
+                {
+                  "value": "hQjy",
+                  "label": "Renewal",
+                  "color": "blue"
+                }
+              ],
+              "disableColors": false
+            }
+          }
+        },
+        {
+          "id": "fx6wP83o3uK",
+          "sdkName": "source",
+          "definition": {
+            "name": "Source",
+            "type": "single_line_text",
+            "template": {}
+          }
+        },
+        {
+          "id": "fx8rvBi6B54",
+          "sdkName": "nextStep",
+          "definition": {
+            "name": "Next Step",
+            "type": "single_line_text",
+            "template": {}
+          }
+        },
+        {
+          "id": "fxgXxfUn6dP",
+          "sdkName": "lostReason",
+          "definition": {
+            "name": "Lost Reason",
+            "type": "single_line_text",
+            "template": {}
+          }
+        },
+        {
+          "id": "fwh43kLMgQh",
+          "sdkName": "closeNote",
+          "definition": {
+            "name": "Close Note",
+            "type": "long_text",
+            "template": {}
+          }
+        },
+        {
+          "id": "f6wtwZyQKgD",
+          "sdkName": "closedAt",
+          "definition": {
+            "name": "Closed At",
+            "type": "datetime",
+            "template": {
+              "timezone": "",
+              "dateFormat": "local",
+              "timeFormat": "12h",
+              "displayTimeZone": false
+            }
+          }
+        },
+        {
+          "id": "fkHiBWa3Ch6",
+          "sdkName": "stageEnteredAt",
+          "definition": {
+            "name": "Stage Entered At",
+            "type": "datetime",
+            "template": {
+              "timezone": "",
+              "dateFormat": "local",
+              "timeFormat": "12h",
+              "displayTimeZone": false
+            }
+          }
+        },
+        {
+          "id": "fv6UEW23xcE",
+          "sdkName": "openedAt",
+          "definition": {
+            "name": "Opened At",
+            "type": "datetime",
+            "template": {
+              "timezone": "",
+              "dateFormat": "local",
+              "timeFormat": "12h",
+              "displayTimeZone": false
+            }
+          }
+        },
+        {
+          "id": "fxzc3EQHuFn",
+          "sdkName": "position",
+          "definition": {
+            "name": "Position",
+            "type": "number",
+            "template": {
+              "numberFormat": "local",
+              "decimalPlaces": 4
+            }
+          }
+        },
+        {
+          "id": "fu2B4v3uU9t",
+          "sdkName": "description",
+          "definition": {
+            "name": "Description",
+            "type": "long_text",
+            "template": {}
+          }
+        },
+        {
+          "id": "f2EPRAdk4T2",
+          "sdkName": "tagIds",
+          "definition": {
+            "name": "Tag Ids",
+            "type": "long_text",
+            "template": {}
+          }
+        },
+        {
+          "id": "fseq5RaXFGc",
+          "sdkName": "customFields",
+          "definition": {
+            "name": "Custom Fields",
+            "type": "long_text",
+            "template": {}
+          }
+        },
+        {
+          "id": "frx1EQco6ny",
+          "sdkName": "lastActivityAt",
+          "definition": {
+            "name": "Last Activity At",
+            "type": "datetime",
+            "template": {
+              "timezone": "",
+              "dateFormat": "local",
+              "timeFormat": "12h",
+              "displayTimeZone": false
+            }
+          }
+        },
+        {
+          "id": "f3CLNADGSNM",
+          "sdkName": "archived",
+          "definition": {
+            "name": "Archived",
+            "type": "checkbox",
+            "template": {}
+          }
+        },
+        {
+          "id": "fe1939RWEpU",
+          "sdkName": "importId",
+          "definition": {
+            "name": "Import Id",
+            "type": "single_line_text",
+            "template": {}
+          }
+        }
+      ]
+    },
+    {
+      "id": "t4vhSiKJbDa",
+      "sdkName": "dealContacts",
+      "name": "Deal Contacts",
+      "primaryFieldId": "fpcDEsmvQKf",
+      "fields": [
+        {
+          "id": "fpcDEsmvQKf",
+          "sdkName": "dealId",
+          "definition": {
+            "name": "Deal Id",
+            "type": "single_line_text",
+            "template": {}
+          }
+        },
+        {
+          "id": "fuxrfMS16et",
+          "sdkName": "contactId",
+          "definition": {
+            "name": "Contact Id",
+            "type": "single_line_text",
+            "template": {}
+          }
+        },
+        {
+          "id": "f6SiKajQcaZ",
+          "sdkName": "role",
+          "definition": {
+            "name": "Role",
+            "type": "single_select",
+            "template": {
+              "options": [
+                {
+                  "value": "sSYe",
+                  "label": "Decision Maker",
+                  "color": "purple"
+                },
+                {
+                  "value": "ik7g",
+                  "label": "Economic Buyer",
+                  "color": "orange"
+                },
+                {
+                  "value": "kbAk",
+                  "label": "Champion",
+                  "color": "blue"
+                },
+                {
+                  "value": "vo2i",
+                  "label": "Influencer",
+                  "color": "gray"
+                },
+                {
+                  "value": "5t6s",
+                  "label": "Technical Evaluator",
+                  "color": "red"
+                },
+                {
+                  "value": "pEM6",
+                  "label": "End User",
+                  "color": "yellow"
+                },
+                {
+                  "value": "fceS",
+                  "label": "Blocker",
+                  "color": "green"
+                },
+                {
+                  "value": "2SC1",
+                  "label": "Other",
+                  "color": "pink"
+                }
+              ],
+              "disableColors": false
+            }
+          }
+        }
+      ]
+    },
+    {
+      "id": "tfkcVtFNKXC",
+      "sdkName": "stageChanges",
+      "name": "Stage Changes",
+      "primaryFieldId": "fcF1QDxaLcR",
+      "fields": [
+        {
+          "id": "fcF1QDxaLcR",
+          "sdkName": "dealId",
+          "definition": {
+            "name": "Deal Id",
+            "type": "single_line_text",
+            "template": {}
+          }
+        },
+        {
+          "id": "f9qBUzb6uaA",
+          "sdkName": "pipelineId",
+          "definition": {
+            "name": "Pipeline Id",
+            "type": "single_line_text",
+            "template": {}
+          }
+        },
+        {
+          "id": "fhPMJwn7P4q",
+          "sdkName": "fromStageId",
+          "definition": {
+            "name": "From Stage Id",
+            "type": "single_line_text",
+            "template": {}
+          }
+        },
+        {
+          "id": "fnMNEBYCCf1",
+          "sdkName": "toStageId",
+          "definition": {
+            "name": "To Stage Id",
+            "type": "single_line_text",
+            "template": {}
+          }
+        },
+        {
+          "id": "fdfwQ4WYQnB",
+          "sdkName": "changedAt",
+          "definition": {
+            "name": "Changed At",
+            "type": "datetime",
+            "template": {
+              "timezone": "",
+              "dateFormat": "local",
+              "timeFormat": "12h",
+              "displayTimeZone": false
+            }
+          }
+        },
+        {
+          "id": "ftd7AaABTgj",
+          "sdkName": "actorId",
+          "definition": {
+            "name": "Actor Id",
+            "type": "single_line_text",
+            "template": {}
+          }
+        },
+        {
+          "id": "ffbzdnchunA",
+          "sdkName": "amount",
+          "definition": {
+            "name": "Amount",
+            "type": "currency",
+            "template": {
+              "numberFormat": "local",
+              "decimalPlaces": 2,
+              "currencySymbol": "$"
+            }
+          }
+        }
+      ]
+    },
+    {
+      "id": "t4DVU2jEiFH",
+      "sdkName": "activities",
+      "name": "Activities",
+      "primaryFieldId": "ffaiRw2tnR8",
+      "fields": [
+        {
+          "id": "ffaiRw2tnR8",
+          "sdkName": "subject",
+          "definition": {
+            "name": "Subject",
+            "type": "single_line_text",
+            "template": {}
+          }
+        },
+        {
+          "id": "fwExYbDArnp",
+          "sdkName": "kind",
+          "definition": {
+            "name": "Kind",
+            "type": "single_select",
+            "template": {
+              "options": [
+                {
+                  "value": "3rgU",
+                  "label": "Note",
+                  "color": "purple"
+                },
+                {
+                  "value": "bwAh",
+                  "label": "Call",
+                  "color": "orange"
+                },
+                {
+                  "value": "gi7x",
+                  "label": "Email",
+                  "color": "blue"
+                },
+                {
+                  "value": "mN5r",
+                  "label": "Meeting",
+                  "color": "gray"
+                }
+              ],
+              "disableColors": false
+            }
+          }
+        },
+        {
+          "id": "fsusFapi41x",
+          "sdkName": "body",
+          "definition": {
+            "name": "Body",
+            "type": "long_text",
+            "template": {}
+          }
+        },
+        {
+          "id": "fm8M8JHLGsc",
+          "sdkName": "occurredAt",
+          "definition": {
+            "name": "Occurred At",
+            "type": "datetime",
+            "template": {
+              "timezone": "",
+              "dateFormat": "local",
+              "timeFormat": "12h",
+              "displayTimeZone": false
+            }
+          }
+        },
+        {
+          "id": "feaYBL81Hxf",
+          "sdkName": "endsAt",
+          "definition": {
+            "name": "Ends At",
+            "type": "datetime",
+            "template": {
+              "timezone": "",
+              "dateFormat": "local",
+              "timeFormat": "12h",
+              "displayTimeZone": false
+            }
+          }
+        },
+        {
+          "id": "f46jJonKkaM",
+          "sdkName": "durationMinutes",
+          "definition": {
+            "name": "Duration Minutes",
+            "type": "number",
+            "template": {
+              "numberFormat": "local",
+              "decimalPlaces": 0
+            }
+          }
+        },
+        {
+          "id": "fh5YjubnbtE",
+          "sdkName": "outcome",
+          "definition": {
+            "name": "Outcome",
+            "type": "single_select",
+            "template": {
+              "options": [
+                {
+                  "value": "vPmm",
+                  "label": "Connected",
+                  "color": "purple"
+                },
+                {
+                  "value": "pXgK",
+                  "label": "Left Voicemail",
+                  "color": "orange"
+                },
+                {
+                  "value": "2aiw",
+                  "label": "No Answer",
+                  "color": "blue"
+                },
+                {
+                  "value": "2J6K",
+                  "label": "Busy",
+                  "color": "gray"
+                },
+                {
+                  "value": "pXkU",
+                  "label": "Wrong Number",
+                  "color": "red"
+                },
+                {
+                  "value": "67C2",
+                  "label": "Scheduled",
+                  "color": "yellow"
+                },
+                {
+                  "value": "1BWG",
+                  "label": "Completed",
+                  "color": "green"
+                },
+                {
+                  "value": "wixa",
+                  "label": "No Show",
+                  "color": "pink"
+                },
+                {
+                  "value": "7mVB",
+                  "label": "Canceled",
+                  "color": "lime"
+                }
+              ],
+              "disableColors": false
+            }
+          }
+        },
+        {
+          "id": "fc7LmvUu5zp",
+          "sdkName": "direction",
+          "definition": {
+            "name": "Direction",
+            "type": "single_select",
+            "template": {
+              "options": [
+                {
+                  "value": "4AbM",
+                  "label": "Outbound",
+                  "color": "purple"
+                },
+                {
+                  "value": "mx8x",
+                  "label": "Inbound",
+                  "color": "orange"
+                }
+              ],
+              "disableColors": false
+            }
+          }
+        },
+        {
+          "id": "ffqWK1hy4nJ",
+          "sdkName": "emailFrom",
+          "definition": {
+            "name": "Email From",
+            "type": "single_line_text",
+            "template": {}
+          }
+        },
+        {
+          "id": "ffqBriAUHjo",
+          "sdkName": "emailTo",
+          "definition": {
+            "name": "Email To",
+            "type": "single_line_text",
+            "template": {}
+          }
+        },
+        {
+          "id": "feA2U5WiqjW",
+          "sdkName": "emailCc",
+          "definition": {
+            "name": "Email Cc",
+            "type": "single_line_text",
+            "template": {}
+          }
+        },
+        {
+          "id": "fw85KyB6k1K",
+          "sdkName": "delivery",
+          "definition": {
+            "name": "Delivery",
+            "type": "single_select",
+            "template": {
+              "options": [
+                {
+                  "value": "awEF",
+                  "label": "Sent",
+                  "color": "purple"
+                },
+                {
+                  "value": "myc6",
+                  "label": "Logged",
+                  "color": "orange"
+                },
+                {
+                  "value": "faQ2",
+                  "label": "Failed",
+                  "color": "blue"
+                },
+                {
+                  "value": "cJMv",
+                  "label": "Not Sent",
+                  "color": "gray"
+                }
+              ],
+              "disableColors": false
+            }
+          }
+        },
+        {
+          "id": "f3BA9HtN7ZD",
+          "sdkName": "location",
+          "definition": {
+            "name": "Location",
+            "type": "single_line_text",
+            "template": {}
+          }
+        },
+        {
+          "id": "f1YVMfSnBVW",
+          "sdkName": "attendees",
+          "definition": {
+            "name": "Attendees",
+            "type": "long_text",
+            "template": {}
+          }
+        },
+        {
+          "id": "fa2ph15uUZt",
+          "sdkName": "ownerId",
+          "definition": {
+            "name": "Owner Id",
+            "type": "single_line_text",
+            "template": {}
+          }
+        },
+        {
+          "id": "fviV2cQtF5Q",
+          "sdkName": "companyId",
+          "definition": {
+            "name": "Company Id",
+            "type": "single_line_text",
+            "template": {}
+          }
+        },
+        {
+          "id": "fkgK6PiCjYB",
+          "sdkName": "contactId",
+          "definition": {
+            "name": "Contact Id",
+            "type": "single_line_text",
+            "template": {}
+          }
+        },
+        {
+          "id": "frJEPGxxzxS",
+          "sdkName": "dealId",
+          "definition": {
+            "name": "Deal Id",
+            "type": "single_line_text",
+            "template": {}
+          }
+        },
+        {
+          "id": "frrgCrnhQF3",
+          "sdkName": "leadId",
+          "definition": {
+            "name": "Lead Id",
+            "type": "single_line_text",
+            "template": {}
+          }
+        },
+        {
+          "id": "fak29XahbFu",
+          "sdkName": "enrollmentId",
+          "definition": {
+            "name": "Enrollment Id",
+            "type": "single_line_text",
+            "template": {}
+          }
+        },
+        {
+          "id": "f81NFUfLQT4",
+          "sdkName": "bookingPageId",
+          "definition": {
+            "name": "Booking Page Id",
+            "type": "single_line_text",
+            "template": {}
+          }
+        },
+        {
+          "id": "fi1by99C3cC",
+          "sdkName": "publicToken",
+          "definition": {
+            "name": "Public Token",
+            "type": "single_line_text",
+            "template": {}
+          }
+        },
+        {
+          "id": "fsnzzDZvVxv",
+          "sdkName": "pinned",
+          "definition": {
+            "name": "Pinned",
+            "type": "checkbox",
+            "template": {}
+          }
+        },
+        {
+          "id": "fhzTUdwGeN8",
+          "sdkName": "createdById",
+          "definition": {
+            "name": "Created By Id",
+            "type": "single_line_text",
+            "template": {}
+          }
+        }
+      ]
+    },
+    {
+      "id": "tmnTjgaj2AE",
+      "sdkName": "tasks",
+      "name": "Tasks",
+      "primaryFieldId": "fppGpNchDkz",
+      "fields": [
+        {
+          "id": "fppGpNchDkz",
+          "sdkName": "title",
+          "definition": {
+            "name": "Title",
+            "type": "single_line_text",
+            "template": {}
+          }
+        },
+        {
+          "id": "f1rd6oqyVrE",
+          "sdkName": "type",
+          "definition": {
+            "name": "Type",
+            "type": "single_select",
+            "template": {
+              "options": [
+                {
+                  "value": "p6D5",
+                  "label": "To-do",
+                  "color": "purple"
+                },
+                {
+                  "value": "brCm",
+                  "label": "Call",
+                  "color": "orange"
+                },
+                {
+                  "value": "ndAW",
+                  "label": "Email",
+                  "color": "blue"
+                },
+                {
+                  "value": "pvR4",
+                  "label": "Meeting",
+                  "color": "gray"
+                },
+                {
+                  "value": "rsqC",
+                  "label": "LinkedIn",
+                  "color": "red"
+                }
+              ],
+              "disableColors": false
+            }
+          }
+        },
+        {
+          "id": "fg7VcSnoKbj",
+          "sdkName": "status",
+          "definition": {
+            "name": "Status",
+            "type": "single_select",
+            "template": {
+              "options": [
+                {
+                  "value": "dvaU",
+                  "label": "Open",
+                  "color": "purple"
+                },
+                {
+                  "value": "dzcG",
+                  "label": "Done",
+                  "color": "orange"
+                }
+              ],
+              "disableColors": false
+            }
+          }
+        },
+        {
+          "id": "f9jVrhMKvVy",
+          "sdkName": "priority",
+          "definition": {
+            "name": "Priority",
+            "type": "single_select",
+            "template": {
+              "options": [
+                {
+                  "value": "5sjc",
+                  "label": "High",
+                  "color": "purple"
+                },
+                {
+                  "value": "x3aj",
+                  "label": "Normal",
+                  "color": "orange"
+                },
+                {
+                  "value": "mjfR",
+                  "label": "Low",
+                  "color": "blue"
+                }
+              ],
+              "disableColors": false
+            }
+          }
+        },
+        {
+          "id": "fsrWX6eoPXL",
+          "sdkName": "dueDate",
+          "definition": {
+            "name": "Due Date",
+            "type": "date",
+            "template": {
+              "dateFormat": "local"
+            }
+          }
+        },
+        {
+          "id": "fnXjhHVNRTD",
+          "sdkName": "dueTime",
+          "definition": {
+            "name": "Due Time",
+            "type": "single_line_text",
+            "template": {}
+          }
+        },
+        {
+          "id": "fnSZDTAXdUR",
+          "sdkName": "ownerId",
+          "definition": {
+            "name": "Owner Id",
+            "type": "single_line_text",
+            "template": {}
+          }
+        },
+        {
+          "id": "fqZ15jNzH3K",
+          "sdkName": "createdById",
+          "definition": {
+            "name": "Created By Id",
+            "type": "single_line_text",
+            "template": {}
+          }
+        },
+        {
+          "id": "f8tf3eLNTTx",
+          "sdkName": "companyId",
+          "definition": {
+            "name": "Company Id",
+            "type": "single_line_text",
+            "template": {}
+          }
+        },
+        {
+          "id": "fcVNsiwC8Qa",
+          "sdkName": "contactId",
+          "definition": {
+            "name": "Contact Id",
+            "type": "single_line_text",
+            "template": {}
+          }
+        },
+        {
+          "id": "ff4FPmvisqo",
+          "sdkName": "dealId",
+          "definition": {
+            "name": "Deal Id",
+            "type": "single_line_text",
+            "template": {}
+          }
+        },
+        {
+          "id": "fox4L3mWaYq",
+          "sdkName": "leadId",
+          "definition": {
+            "name": "Lead Id",
+            "type": "single_line_text",
+            "template": {}
+          }
+        },
+        {
+          "id": "f6acWWYHoCb",
+          "sdkName": "notes",
+          "definition": {
+            "name": "Notes",
+            "type": "long_text",
+            "template": {}
+          }
+        },
+        {
+          "id": "fdnEFNtvYqC",
+          "sdkName": "completedAt",
+          "definition": {
+            "name": "Completed At",
+            "type": "datetime",
+            "template": {
+              "timezone": "",
+              "dateFormat": "local",
+              "timeFormat": "12h",
+              "displayTimeZone": false
+            }
+          }
+        },
+        {
+          "id": "fc8Q8Z4F6Re",
+          "sdkName": "enrollmentId",
+          "definition": {
+            "name": "Enrollment Id",
+            "type": "single_line_text",
+            "template": {}
+          }
+        },
+        {
+          "id": "fky7b95e6Wg",
+          "sdkName": "stepId",
+          "definition": {
+            "name": "Step Id",
+            "type": "single_line_text",
+            "template": {}
+          }
+        },
+        {
+          "id": "f5n84Y1QaUh",
+          "sdkName": "systemKey",
+          "definition": {
+            "name": "System Key",
+            "type": "single_line_text",
+            "template": {}
+          }
+        },
+        {
+          "id": "fdUkKAgA4fc",
+          "sdkName": "remindedAt",
+          "definition": {
+            "name": "Reminded At",
+            "type": "datetime",
+            "template": {
+              "timezone": "",
+              "dateFormat": "local",
+              "timeFormat": "12h",
+              "displayTimeZone": false
+            }
+          }
+        }
+      ]
+    },
+    {
+      "id": "ttr3SHgTgwP",
+      "sdkName": "products",
+      "name": "Products",
+      "primaryFieldId": "fh1pYLM9BAa",
+      "fields": [
+        {
+          "id": "fh1pYLM9BAa",
+          "sdkName": "name",
+          "definition": {
+            "name": "Name",
+            "type": "single_line_text",
+            "template": {}
+          }
+        },
+        {
+          "id": "frVkewUWFRk",
+          "sdkName": "sku",
+          "definition": {
+            "name": "Sku",
+            "type": "single_line_text",
+            "template": {}
+          }
+        },
+        {
+          "id": "ftRwVJ6dpKT",
+          "sdkName": "description",
+          "definition": {
+            "name": "Description",
+            "type": "long_text",
+            "template": {}
+          }
+        },
+        {
+          "id": "fbAU4nb84Jc",
+          "sdkName": "unitPrice",
+          "definition": {
+            "name": "Unit Price",
+            "type": "currency",
+            "template": {
+              "numberFormat": "local",
+              "decimalPlaces": 2,
+              "currencySymbol": "$"
+            }
+          }
+        },
+        {
+          "id": "fmBka9wK5nu",
+          "sdkName": "billing",
+          "definition": {
+            "name": "Billing",
+            "type": "single_select",
+            "template": {
+              "options": [
+                {
+                  "value": "m58U",
+                  "label": "One-time",
+                  "color": "purple"
+                },
+                {
+                  "value": "ptKN",
+                  "label": "Monthly",
+                  "color": "orange"
+                },
+                {
+                  "value": "pLQF",
+                  "label": "Annual",
+                  "color": "blue"
+                }
+              ],
+              "disableColors": false
+            }
+          }
+        },
+        {
+          "id": "fcLdkDYD9gL",
+          "sdkName": "category",
+          "definition": {
+            "name": "Category",
+            "type": "single_line_text",
+            "template": {}
+          }
+        },
+        {
+          "id": "faQ5FyNZQdA",
+          "sdkName": "active",
+          "definition": {
+            "name": "Active",
+            "type": "checkbox",
+            "template": {}
+          }
+        }
+      ]
+    },
+    {
+      "id": "trBYwmK8oz7",
+      "sdkName": "lineItems",
+      "name": "Line Items",
+      "primaryFieldId": "fcvjW1RMPqn",
+      "fields": [
+        {
+          "id": "fcvjW1RMPqn",
+          "sdkName": "name",
+          "definition": {
+            "name": "Name",
+            "type": "single_line_text",
+            "template": {}
+          }
+        },
+        {
+          "id": "fkfKnYHdR7o",
+          "sdkName": "dealId",
+          "definition": {
+            "name": "Deal Id",
+            "type": "single_line_text",
+            "template": {}
+          }
+        },
+        {
+          "id": "f9WhkQCYBKr",
+          "sdkName": "productId",
+          "definition": {
+            "name": "Product Id",
+            "type": "single_line_text",
+            "template": {}
+          }
+        },
+        {
+          "id": "fharzYshihM",
+          "sdkName": "description",
+          "definition": {
+            "name": "Description",
+            "type": "long_text",
+            "template": {}
+          }
+        },
+        {
+          "id": "fdfb91L24Bs",
+          "sdkName": "quantity",
+          "definition": {
+            "name": "Quantity",
+            "type": "number",
+            "template": {
+              "numberFormat": "local",
+              "decimalPlaces": 2
+            }
+          }
+        },
+        {
+          "id": "f1VSodH66J6",
+          "sdkName": "unitPrice",
+          "definition": {
+            "name": "Unit Price",
+            "type": "currency",
+            "template": {
+              "numberFormat": "local",
+              "decimalPlaces": 2,
+              "currencySymbol": "$"
+            }
+          }
+        },
+        {
+          "id": "fge9PQqdQia",
+          "sdkName": "discount",
+          "definition": {
+            "name": "Discount",
+            "type": "number",
+            "template": {
+              "numberFormat": "local",
+              "decimalPlaces": 2
+            }
+          }
+        },
+        {
+          "id": "f2URsuj6zvD",
+          "sdkName": "billing",
+          "definition": {
+            "name": "Billing",
+            "type": "single_select",
+            "template": {
+              "options": [
+                {
+                  "value": "rrDF",
+                  "label": "One-time",
+                  "color": "purple"
+                },
+                {
+                  "value": "pnJZ",
+                  "label": "Monthly",
+                  "color": "orange"
+                },
+                {
+                  "value": "9zXz",
+                  "label": "Annual",
+                  "color": "blue"
+                }
+              ],
+              "disableColors": false
+            }
+          }
+        },
+        {
+          "id": "fjFtLPiaDhY",
+          "sdkName": "termMonths",
+          "definition": {
+            "name": "Term Months",
+            "type": "number",
+            "template": {
+              "numberFormat": "local",
+              "decimalPlaces": 0
+            }
+          }
+        },
+        {
+          "id": "fsfs8ZLN9kY",
+          "sdkName": "position",
+          "definition": {
+            "name": "Position",
+            "type": "number",
+            "template": {
+              "numberFormat": "local",
+              "decimalPlaces": 0
+            }
+          }
+        }
+      ]
+    },
+    {
+      "id": "tjtWKCfNkQB",
+      "sdkName": "quotes",
+      "name": "Quotes",
+      "primaryFieldId": "fji2oWp2P9Y",
+      "fields": [
+        {
+          "id": "fji2oWp2P9Y",
+          "sdkName": "number",
+          "definition": {
+            "name": "Number",
+            "type": "single_line_text",
+            "template": {}
+          }
+        },
+        {
+          "id": "fdG9X9WvG6g",
+          "sdkName": "title",
+          "definition": {
+            "name": "Title",
+            "type": "single_line_text",
+            "template": {}
+          }
+        },
+        {
+          "id": "fu1RLCZ1sW6",
+          "sdkName": "dealId",
+          "definition": {
+            "name": "Deal Id",
+            "type": "single_line_text",
+            "template": {}
+          }
+        },
+        {
+          "id": "ffvUdyRmWxb",
+          "sdkName": "companyId",
+          "definition": {
+            "name": "Company Id",
+            "type": "single_line_text",
+            "template": {}
+          }
+        },
+        {
+          "id": "fv72rhuxYkc",
+          "sdkName": "contactId",
+          "definition": {
+            "name": "Contact Id",
+            "type": "single_line_text",
+            "template": {}
+          }
+        },
+        {
+          "id": "f8kPgjwRT7C",
+          "sdkName": "ownerId",
+          "definition": {
+            "name": "Owner Id",
+            "type": "single_line_text",
+            "template": {}
+          }
+        },
+        {
+          "id": "fnhxmMGQmDe",
+          "sdkName": "status",
+          "definition": {
+            "name": "Status",
+            "type": "single_select",
+            "template": {
+              "options": [
+                {
+                  "value": "jxnL",
+                  "label": "Draft",
+                  "color": "purple"
+                },
+                {
+                  "value": "nkLD",
+                  "label": "Sent",
+                  "color": "orange"
+                },
+                {
+                  "value": "uBxw",
+                  "label": "Viewed",
+                  "color": "blue"
+                },
+                {
+                  "value": "xzRC",
+                  "label": "Accepted",
+                  "color": "gray"
+                },
+                {
+                  "value": "x9qz",
+                  "label": "Declined",
+                  "color": "red"
+                },
+                {
+                  "value": "p4fy",
+                  "label": "Expired",
+                  "color": "yellow"
+                },
+                {
+                  "value": "79Wz",
+                  "label": "Void",
+                  "color": "green"
+                }
+              ],
+              "disableColors": false
+            }
+          }
+        },
+        {
+          "id": "feyUacRSEwy",
+          "sdkName": "token",
+          "definition": {
+            "name": "Token",
+            "type": "single_line_text",
+            "template": {}
+          }
+        },
+        {
+          "id": "fi4kXcaDZKk",
+          "sdkName": "items",
+          "definition": {
+            "name": "Items",
+            "type": "long_text",
+            "template": {}
+          }
+        },
+        {
+          "id": "fxe1Nxdjo44",
+          "sdkName": "subtotal",
+          "definition": {
+            "name": "Subtotal",
+            "type": "currency",
+            "template": {
+              "numberFormat": "local",
+              "decimalPlaces": 2,
+              "currencySymbol": "$"
+            }
+          }
+        },
+        {
+          "id": "foiSizxVMSL",
+          "sdkName": "discountTotal",
+          "definition": {
+            "name": "Discount Total",
+            "type": "currency",
+            "template": {
+              "numberFormat": "local",
+              "decimalPlaces": 2,
+              "currencySymbol": "$"
+            }
+          }
+        },
+        {
+          "id": "fj8jzR4aMCF",
+          "sdkName": "taxRate",
+          "definition": {
+            "name": "Tax Rate",
+            "type": "number",
+            "template": {
+              "numberFormat": "local",
+              "decimalPlaces": 3
+            }
+          }
+        },
+        {
+          "id": "faWPAiHE8bB",
+          "sdkName": "tax",
+          "definition": {
+            "name": "Tax",
+            "type": "currency",
+            "template": {
+              "numberFormat": "local",
+              "decimalPlaces": 2,
+              "currencySymbol": "$"
+            }
+          }
+        },
+        {
+          "id": "fmxRHXG3i79",
+          "sdkName": "total",
+          "definition": {
+            "name": "Total",
+            "type": "currency",
+            "template": {
+              "numberFormat": "local",
+              "decimalPlaces": 2,
+              "currencySymbol": "$"
+            }
+          }
+        },
+        {
+          "id": "fapNq8LfLvh",
+          "sdkName": "currency",
+          "definition": {
+            "name": "Currency",
+            "type": "single_line_text",
+            "template": {}
+          }
+        },
+        {
+          "id": "fp3Gjq7gFxx",
+          "sdkName": "expiresOn",
+          "definition": {
+            "name": "Expires On",
+            "type": "date",
+            "template": {
+              "dateFormat": "local"
+            }
+          }
+        },
+        {
+          "id": "fhgtdmE6X2U",
+          "sdkName": "terms",
+          "definition": {
+            "name": "Terms",
+            "type": "long_text",
+            "template": {}
+          }
+        },
+        {
+          "id": "fvCCtz4RaQa",
+          "sdkName": "buyerNote",
+          "definition": {
+            "name": "Buyer Note",
+            "type": "long_text",
+            "template": {}
+          }
+        },
+        {
+          "id": "fttQ9RykFoQ",
+          "sdkName": "sentAt",
+          "definition": {
+            "name": "Sent At",
+            "type": "datetime",
+            "template": {
+              "timezone": "",
+              "dateFormat": "local",
+              "timeFormat": "12h",
+              "displayTimeZone": false
+            }
+          }
+        },
+        {
+          "id": "fkrCAafe2Hg",
+          "sdkName": "viewedAt",
+          "definition": {
+            "name": "Viewed At",
+            "type": "datetime",
+            "template": {
+              "timezone": "",
+              "dateFormat": "local",
+              "timeFormat": "12h",
+              "displayTimeZone": false
+            }
+          }
+        },
+        {
+          "id": "f1TpkfnCr5P",
+          "sdkName": "viewCount",
+          "definition": {
+            "name": "View Count",
+            "type": "number",
+            "template": {
+              "numberFormat": "local",
+              "decimalPlaces": 0
+            }
+          }
+        },
+        {
+          "id": "febwax3sB59",
+          "sdkName": "acceptedAt",
+          "definition": {
+            "name": "Accepted At",
+            "type": "datetime",
+            "template": {
+              "timezone": "",
+              "dateFormat": "local",
+              "timeFormat": "12h",
+              "displayTimeZone": false
+            }
+          }
+        },
+        {
+          "id": "fvKCNyy5afK",
+          "sdkName": "acceptedName",
+          "definition": {
+            "name": "Accepted Name",
+            "type": "single_line_text",
+            "template": {}
+          }
+        },
+        {
+          "id": "f8wm5yAa75s",
+          "sdkName": "acceptedTitle",
+          "definition": {
+            "name": "Accepted Title",
+            "type": "single_line_text",
+            "template": {}
+          }
+        },
+        {
+          "id": "frTkHWjTHGg",
+          "sdkName": "acceptedEmail",
+          "definition": {
+            "name": "Accepted Email",
+            "type": "single_line_text",
+            "template": {}
+          }
+        },
+        {
+          "id": "fafP4h4oAdx",
+          "sdkName": "declinedAt",
+          "definition": {
+            "name": "Declined At",
+            "type": "datetime",
+            "template": {
+              "timezone": "",
+              "dateFormat": "local",
+              "timeFormat": "12h",
+              "displayTimeZone": false
+            }
+          }
+        },
+        {
+          "id": "ftkwyZRQkfD",
+          "sdkName": "declineReason",
+          "definition": {
+            "name": "Decline Reason",
+            "type": "long_text",
+            "template": {}
+          }
+        }
+      ]
+    },
+    {
+      "id": "teXrXHwxqTB",
+      "sdkName": "emailTemplates",
+      "name": "Email Templates",
+      "primaryFieldId": "fdQz5Tnw7TT",
+      "fields": [
+        {
+          "id": "fdQz5Tnw7TT",
+          "sdkName": "name",
+          "definition": {
+            "name": "Name",
+            "type": "single_line_text",
+            "template": {}
+          }
+        },
+        {
+          "id": "f57FHzGT4t2",
+          "sdkName": "subject",
+          "definition": {
+            "name": "Subject",
+            "type": "single_line_text",
+            "template": {}
+          }
+        },
+        {
+          "id": "fiarPz3vhRt",
+          "sdkName": "body",
+          "definition": {
+            "name": "Body",
+            "type": "long_text",
+            "template": {}
+          }
+        },
+        {
+          "id": "f8AKE6MuJbM",
+          "sdkName": "category",
+          "definition": {
+            "name": "Category",
+            "type": "single_line_text",
+            "template": {}
+          }
+        },
+        {
+          "id": "f2ojgDaJ1ie",
+          "sdkName": "ownerId",
+          "definition": {
+            "name": "Owner Id",
+            "type": "single_line_text",
+            "template": {}
+          }
+        },
+        {
+          "id": "fvAEdGuTv6f",
+          "sdkName": "shared",
+          "definition": {
+            "name": "Shared",
+            "type": "checkbox",
+            "template": {}
+          }
+        },
+        {
+          "id": "f6UC4VrmXsa",
+          "sdkName": "archived",
+          "definition": {
+            "name": "Archived",
+            "type": "checkbox",
+            "template": {}
+          }
+        },
+        {
+          "id": "fh8qbYtLnFX",
+          "sdkName": "useCount",
+          "definition": {
+            "name": "Use Count",
+            "type": "number",
+            "template": {
+              "numberFormat": "local",
+              "decimalPlaces": 0
+            }
+          }
+        },
+        {
+          "id": "f7aApKcSgQ8",
+          "sdkName": "lastUsedAt",
+          "definition": {
+            "name": "Last Used At",
+            "type": "datetime",
+            "template": {
+              "timezone": "",
+              "dateFormat": "local",
+              "timeFormat": "12h",
+              "displayTimeZone": false
+            }
+          }
+        }
+      ]
+    },
+    {
+      "id": "tmb2FsizB9K",
+      "sdkName": "sequences",
+      "name": "Sequences",
+      "primaryFieldId": "frdpmFYrKQj",
+      "fields": [
+        {
+          "id": "frdpmFYrKQj",
+          "sdkName": "name",
+          "definition": {
+            "name": "Name",
+            "type": "single_line_text",
+            "template": {}
+          }
+        },
+        {
+          "id": "fuV8HWXovYS",
+          "sdkName": "description",
+          "definition": {
+            "name": "Description",
+            "type": "long_text",
+            "template": {}
+          }
+        },
+        {
+          "id": "fvVhCZcbyYR",
+          "sdkName": "ownerId",
+          "definition": {
+            "name": "Owner Id",
+            "type": "single_line_text",
+            "template": {}
+          }
+        },
+        {
+          "id": "fk3VumXYzF5",
+          "sdkName": "status",
+          "definition": {
+            "name": "Status",
+            "type": "single_select",
+            "template": {
+              "options": [
+                {
+                  "value": "9jSJ",
+                  "label": "Active",
+                  "color": "purple"
+                },
+                {
+                  "value": "pCS4",
+                  "label": "Paused",
+                  "color": "orange"
+                },
+                {
+                  "value": "rzcP",
+                  "label": "Archived",
+                  "color": "blue"
+                }
+              ],
+              "disableColors": false
+            }
+          }
+        },
+        {
+          "id": "f1fxJFFfcSX",
+          "sdkName": "steps",
+          "definition": {
+            "name": "Steps",
+            "type": "long_text",
+            "template": {}
+          }
+        },
+        {
+          "id": "fqNcq3Ai2Bv",
+          "sdkName": "settings",
+          "definition": {
+            "name": "Settings",
+            "type": "long_text",
+            "template": {}
+          }
+        },
+        {
+          "id": "f9EBC4qc724",
+          "sdkName": "shared",
+          "definition": {
+            "name": "Shared",
+            "type": "checkbox",
+            "template": {}
+          }
+        }
+      ]
+    },
+    {
+      "id": "tgb4shb9yYX",
+      "sdkName": "enrollments",
+      "name": "Enrollments",
+      "primaryFieldId": "fuiT6gauupe",
+      "fields": [
+        {
+          "id": "fuiT6gauupe",
+          "sdkName": "sequenceId",
+          "definition": {
+            "name": "Sequence Id",
+            "type": "single_line_text",
+            "template": {}
+          }
+        },
+        {
+          "id": "fnw7BuDnzvQ",
+          "sdkName": "contactId",
+          "definition": {
+            "name": "Contact Id",
+            "type": "single_line_text",
+            "template": {}
+          }
+        },
+        {
+          "id": "fk4x1brf9zR",
+          "sdkName": "dealId",
+          "definition": {
+            "name": "Deal Id",
+            "type": "single_line_text",
+            "template": {}
+          }
+        },
+        {
+          "id": "f59AuEiHdWc",
+          "sdkName": "ownerId",
+          "definition": {
+            "name": "Owner Id",
+            "type": "single_line_text",
+            "template": {}
+          }
+        },
+        {
+          "id": "f6eKQy84quH",
+          "sdkName": "status",
+          "definition": {
+            "name": "Status",
+            "type": "single_select",
+            "template": {
+              "options": [
+                {
+                  "value": "rkSg",
+                  "label": "Active",
+                  "color": "purple"
+                },
+                {
+                  "value": "3vmG",
+                  "label": "Paused",
+                  "color": "orange"
+                },
+                {
+                  "value": "8dmw",
+                  "label": "Finished",
+                  "color": "blue"
+                },
+                {
+                  "value": "kZuM",
+                  "label": "Exited",
+                  "color": "gray"
+                }
+              ],
+              "disableColors": false
+            }
+          }
+        },
+        {
+          "id": "fs85J6nNjKB",
+          "sdkName": "stepIndex",
+          "definition": {
+            "name": "Step Index",
+            "type": "number",
+            "template": {
+              "numberFormat": "local",
+              "decimalPlaces": 0
+            }
+          }
+        },
+        {
+          "id": "fkjFr3L1Jkm",
+          "sdkName": "nextRunAt",
+          "definition": {
+            "name": "Next Run At",
+            "type": "datetime",
+            "template": {
+              "timezone": "",
+              "dateFormat": "local",
+              "timeFormat": "12h",
+              "displayTimeZone": false
+            }
+          }
+        },
+        {
+          "id": "f7ju6SZ2wvq",
+          "sdkName": "enrolledAt",
+          "definition": {
+            "name": "Enrolled At",
+            "type": "datetime",
+            "template": {
+              "timezone": "",
+              "dateFormat": "local",
+              "timeFormat": "12h",
+              "displayTimeZone": false
+            }
+          }
+        },
+        {
+          "id": "ftUd2bwbmAs",
+          "sdkName": "lastStepAt",
+          "definition": {
+            "name": "Last Step At",
+            "type": "datetime",
+            "template": {
+              "timezone": "",
+              "dateFormat": "local",
+              "timeFormat": "12h",
+              "displayTimeZone": false
+            }
+          }
+        },
+        {
+          "id": "fwndu26vxuy",
+          "sdkName": "finishedAt",
+          "definition": {
+            "name": "Finished At",
+            "type": "datetime",
+            "template": {
+              "timezone": "",
+              "dateFormat": "local",
+              "timeFormat": "12h",
+              "displayTimeZone": false
+            }
+          }
+        },
+        {
+          "id": "fw81PbKaLXw",
+          "sdkName": "exitReason",
+          "definition": {
+            "name": "Exit Reason",
+            "type": "single_line_text",
+            "template": {}
+          }
+        },
+        {
+          "id": "f7Vt3KWLrfX",
+          "sdkName": "enrolledById",
+          "definition": {
+            "name": "Enrolled By Id",
+            "type": "single_line_text",
+            "template": {}
+          }
+        }
+      ]
+    },
+    {
+      "id": "twZAFV74Ccp",
+      "sdkName": "forms",
+      "name": "Forms",
+      "primaryFieldId": "fehGFftf76q",
+      "fields": [
+        {
+          "id": "fehGFftf76q",
+          "sdkName": "name",
+          "definition": {
+            "name": "Name",
+            "type": "single_line_text",
+            "template": {}
+          }
+        },
+        {
+          "id": "fuB83A2G4cM",
+          "sdkName": "slug",
+          "definition": {
+            "name": "Slug",
+            "type": "single_line_text",
+            "template": {}
+          }
+        },
+        {
+          "id": "fe6bZWFqoMy",
+          "sdkName": "intro",
+          "definition": {
+            "name": "Intro",
+            "type": "long_text",
+            "template": {}
+          }
+        },
+        {
+          "id": "fwqzdypc6W6",
+          "sdkName": "fields",
+          "definition": {
+            "name": "Fields",
+            "type": "long_text",
+            "template": {}
+          }
+        },
+        {
+          "id": "ffJ9V9UTeSW",
+          "sdkName": "status",
+          "definition": {
+            "name": "Status",
+            "type": "single_select",
+            "template": {
+              "options": [
+                {
+                  "value": "rK5x",
+                  "label": "Live",
+                  "color": "purple"
+                },
+                {
+                  "value": "cf5d",
+                  "label": "Paused",
+                  "color": "orange"
+                }
+              ],
+              "disableColors": false
+            }
+          }
+        },
+        {
+          "id": "ftFdd1KAV2n",
+          "sdkName": "submitLabel",
+          "definition": {
+            "name": "Submit Label",
+            "type": "single_line_text",
+            "template": {}
+          }
+        },
+        {
+          "id": "fsFMa8cbCbF",
+          "sdkName": "successMessage",
+          "definition": {
+            "name": "Success Message",
+            "type": "long_text",
+            "template": {}
+          }
+        },
+        {
+          "id": "feswNKxdRCX",
+          "sdkName": "redirectUrl",
+          "definition": {
+            "name": "Redirect Url",
+            "type": "url",
+            "template": {}
+          }
+        },
+        {
+          "id": "ftWWA8c3Zmg",
+          "sdkName": "assignment",
+          "definition": {
+            "name": "Assignment",
+            "type": "single_select",
+            "template": {
+              "options": [
+                {
+                  "value": "nhfL",
+                  "label": "Round Robin",
+                  "color": "purple"
+                },
+                {
+                  "value": "utjZ",
+                  "label": "Member",
+                  "color": "orange"
+                },
+                {
+                  "value": "oCwi",
+                  "label": "Unassigned",
+                  "color": "blue"
+                }
+              ],
+              "disableColors": false
+            }
+          }
+        },
+        {
+          "id": "fgRwpH3D6Bj",
+          "sdkName": "assigneeId",
+          "definition": {
+            "name": "Assignee Id",
+            "type": "single_line_text",
+            "template": {}
+          }
+        },
+        {
+          "id": "fpAf5VKco8t",
+          "sdkName": "source",
+          "definition": {
+            "name": "Source",
+            "type": "single_line_text",
+            "template": {}
+          }
+        },
+        {
+          "id": "fsak4Wa5TFj",
+          "sdkName": "notifyIds",
+          "definition": {
+            "name": "Notify Ids",
+            "type": "long_text",
+            "template": {}
+          }
+        },
+        {
+          "id": "fietvELPme9",
+          "sdkName": "sequenceId",
+          "definition": {
+            "name": "Sequence Id",
+            "type": "single_line_text",
+            "template": {}
+          }
+        },
+        {
+          "id": "fhqDTi86T4k",
+          "sdkName": "tagIds",
+          "definition": {
+            "name": "Tag Ids",
+            "type": "long_text",
+            "template": {}
+          }
+        },
+        {
+          "id": "f4ZS8Bsp2wv",
+          "sdkName": "ownerId",
+          "definition": {
+            "name": "Owner Id",
+            "type": "single_line_text",
+            "template": {}
+          }
+        },
+        {
+          "id": "fsZeaoPz7u3",
+          "sdkName": "submissionCount",
+          "definition": {
+            "name": "Submission Count",
+            "type": "number",
+            "template": {
+              "numberFormat": "local",
+              "decimalPlaces": 0
+            }
+          }
+        },
+        {
+          "id": "fosGyjMxPox",
+          "sdkName": "lastSubmissionAt",
+          "definition": {
+            "name": "Last Submission At",
+            "type": "datetime",
+            "template": {
+              "timezone": "",
+              "dateFormat": "local",
+              "timeFormat": "12h",
+              "displayTimeZone": false
+            }
+          }
+        },
+        {
+          "id": "fmtiJzZu2Jq",
+          "sdkName": "archived",
+          "definition": {
+            "name": "Archived",
+            "type": "checkbox",
+            "template": {}
+          }
+        }
+      ]
+    },
+    {
+      "id": "t6VCizVnH6W",
+      "sdkName": "submissions",
+      "name": "Submissions",
+      "primaryFieldId": "ffbqsbRkjoQ",
+      "fields": [
+        {
+          "id": "ffbqsbRkjoQ",
+          "sdkName": "formId",
+          "definition": {
+            "name": "Form Id",
+            "type": "single_line_text",
+            "template": {}
+          }
+        },
+        {
+          "id": "fxg4c6ja8Cr",
+          "sdkName": "email",
+          "definition": {
+            "name": "Email",
+            "type": "email",
+            "template": {}
+          }
+        },
+        {
+          "id": "f3cmbMyDxMt",
+          "sdkName": "name",
+          "definition": {
+            "name": "Name",
+            "type": "single_line_text",
+            "template": {}
+          }
+        },
+        {
+          "id": "fuzJZrm4XpD",
+          "sdkName": "answers",
+          "definition": {
+            "name": "Answers",
+            "type": "long_text",
+            "template": {}
+          }
+        },
+        {
+          "id": "fpJsBdpu6ZB",
+          "sdkName": "leadId",
+          "definition": {
+            "name": "Lead Id",
+            "type": "single_line_text",
+            "template": {}
+          }
+        },
+        {
+          "id": "fvggZjfezsx",
+          "sdkName": "contactId",
+          "definition": {
+            "name": "Contact Id",
+            "type": "single_line_text",
+            "template": {}
+          }
+        },
+        {
+          "id": "fuiCeZq4jRa",
+          "sdkName": "outcome",
+          "definition": {
+            "name": "Outcome",
+            "type": "single_select",
+            "template": {
+              "options": [
+                {
+                  "value": "jc4T",
+                  "label": "New Lead",
+                  "color": "purple"
+                },
+                {
+                  "value": "x9WG",
+                  "label": "Existing Lead",
+                  "color": "orange"
+                },
+                {
+                  "value": "1CST",
+                  "label": "Existing Contact",
+                  "color": "blue"
+                },
+                {
+                  "value": "m9pB",
+                  "label": "Spam",
+                  "color": "gray"
+                }
+              ],
+              "disableColors": false
+            }
+          }
+        },
+        {
+          "id": "fkGqmj41RXH",
+          "sdkName": "submittedAt",
+          "definition": {
+            "name": "Submitted At",
+            "type": "datetime",
+            "template": {
+              "timezone": "",
+              "dateFormat": "local",
+              "timeFormat": "12h",
+              "displayTimeZone": false
+            }
+          }
+        },
+        {
+          "id": "fmxrd1MKF6u",
+          "sdkName": "pageUrl",
+          "definition": {
+            "name": "Page Url",
+            "type": "single_line_text",
+            "template": {}
+          }
+        },
+        {
+          "id": "f1hBr6jhgsR",
+          "sdkName": "referrer",
+          "definition": {
+            "name": "Referrer",
+            "type": "single_line_text",
+            "template": {}
+          }
+        },
+        {
+          "id": "fpTC4msYFUW",
+          "sdkName": "utm",
+          "definition": {
+            "name": "Utm",
+            "type": "long_text",
+            "template": {}
+          }
+        }
+      ]
+    },
+    {
+      "id": "tfRDFeoieUj",
+      "sdkName": "bookingPages",
+      "name": "Booking Pages",
+      "primaryFieldId": "fpW2839GwkA",
+      "fields": [
+        {
+          "id": "fpW2839GwkA",
+          "sdkName": "name",
+          "definition": {
+            "name": "Name",
+            "type": "single_line_text",
+            "template": {}
+          }
+        },
+        {
+          "id": "f2H6oKogV95",
+          "sdkName": "slug",
+          "definition": {
+            "name": "Slug",
+            "type": "single_line_text",
+            "template": {}
+          }
+        },
+        {
+          "id": "fnaWhvnYvAP",
+          "sdkName": "description",
+          "definition": {
+            "name": "Description",
+            "type": "long_text",
+            "template": {}
+          }
+        },
+        {
+          "id": "fsEm9G2kpkp",
+          "sdkName": "hostIds",
+          "definition": {
+            "name": "Host Ids",
+            "type": "long_text",
+            "template": {}
+          }
+        },
+        {
+          "id": "faLV88cFroy",
+          "sdkName": "durationMinutes",
+          "definition": {
+            "name": "Duration Minutes",
+            "type": "number",
+            "template": {
+              "numberFormat": "local",
+              "decimalPlaces": 0
+            }
+          }
+        },
+        {
+          "id": "fce9s8GezJs",
+          "sdkName": "bufferMinutes",
+          "definition": {
+            "name": "Buffer Minutes",
+            "type": "number",
+            "template": {
+              "numberFormat": "local",
+              "decimalPlaces": 0
+            }
+          }
+        },
+        {
+          "id": "fouvFNmLAhU",
+          "sdkName": "minNoticeHours",
+          "definition": {
+            "name": "Min Notice Hours",
+            "type": "number",
+            "template": {
+              "numberFormat": "local",
+              "decimalPlaces": 0
+            }
+          }
+        },
+        {
+          "id": "fakghxK4Hma",
+          "sdkName": "windowDays",
+          "definition": {
+            "name": "Window Days",
+            "type": "number",
+            "template": {
+              "numberFormat": "local",
+              "decimalPlaces": 0
+            }
+          }
+        },
+        {
+          "id": "fa9M8jGdW4d",
+          "sdkName": "availability",
+          "definition": {
+            "name": "Availability",
+            "type": "long_text",
+            "template": {}
+          }
+        },
+        {
+          "id": "feqb8hgMY3m",
+          "sdkName": "timezone",
+          "definition": {
+            "name": "Timezone",
+            "type": "single_line_text",
+            "template": {}
+          }
+        },
+        {
+          "id": "foFRTSUFMvP",
+          "sdkName": "location",
+          "definition": {
+            "name": "Location",
+            "type": "single_line_text",
+            "template": {}
+          }
+        },
+        {
+          "id": "fkXJzTS8Lji",
+          "sdkName": "questions",
+          "definition": {
+            "name": "Questions",
+            "type": "long_text",
+            "template": {}
+          }
+        },
+        {
+          "id": "ftGJ3i55nHp",
+          "sdkName": "active",
+          "definition": {
+            "name": "Active",
+            "type": "checkbox",
+            "template": {}
+          }
+        },
+        {
+          "id": "f4pvV7BHYx5",
+          "sdkName": "ownerId",
+          "definition": {
+            "name": "Owner Id",
+            "type": "single_line_text",
+            "template": {}
+          }
+        },
+        {
+          "id": "f6tAdy9gvBH",
+          "sdkName": "bookingCount",
+          "definition": {
+            "name": "Booking Count",
+            "type": "number",
+            "template": {
+              "numberFormat": "local",
+              "decimalPlaces": 0
+            }
+          }
+        },
+        {
+          "id": "fqAmpyqg1R4",
+          "sdkName": "rotationCursor",
+          "definition": {
+            "name": "Rotation Cursor",
+            "type": "number",
+            "template": {
+              "numberFormat": "local",
+              "decimalPlaces": 0
+            }
+          }
+        }
+      ]
+    },
+    {
+      "id": "t34gs7A7rnT",
+      "sdkName": "views",
+      "name": "Views",
+      "primaryFieldId": "frop8xY8jHx",
+      "fields": [
+        {
+          "id": "frop8xY8jHx",
+          "sdkName": "name",
+          "definition": {
+            "name": "Name",
+            "type": "single_line_text",
+            "template": {}
+          }
+        },
+        {
+          "id": "f6SbTzBA9Qi",
+          "sdkName": "scope",
+          "definition": {
+            "name": "Scope",
+            "type": "single_select",
+            "template": {
+              "options": [
+                {
+                  "value": "srZB",
+                  "label": "Deals",
+                  "color": "purple"
+                },
+                {
+                  "value": "dXsK",
+                  "label": "Companies",
+                  "color": "orange"
+                },
+                {
+                  "value": "1a6e",
+                  "label": "Contacts",
+                  "color": "blue"
+                },
+                {
+                  "value": "djdo",
+                  "label": "Leads",
+                  "color": "gray"
+                },
+                {
+                  "value": "eWkm",
+                  "label": "Tasks",
+                  "color": "red"
+                },
+                {
+                  "value": "2BiQ",
+                  "label": "Activities",
+                  "color": "yellow"
+                },
+                {
+                  "value": "7vd1",
+                  "label": "Quotes",
+                  "color": "green"
+                }
+              ],
+              "disableColors": false
+            }
+          }
+        },
+        {
+          "id": "f4XQmznYMZV",
+          "sdkName": "config",
+          "definition": {
+            "name": "Config",
+            "type": "long_text",
+            "template": {}
+          }
+        },
+        {
+          "id": "ft2PdR1Ke3u",
+          "sdkName": "ownerId",
+          "definition": {
+            "name": "Owner Id",
+            "type": "single_line_text",
+            "template": {}
+          }
+        },
+        {
+          "id": "fwGB3G2W8eM",
+          "sdkName": "shared",
+          "definition": {
+            "name": "Shared",
+            "type": "checkbox",
+            "template": {}
+          }
+        },
+        {
+          "id": "fa6Bp9DZ4J5",
+          "sdkName": "position",
+          "definition": {
+            "name": "Position",
+            "type": "number",
+            "template": {
+              "numberFormat": "local",
+              "decimalPlaces": 0
+            }
+          }
+        }
+      ]
+    },
+    {
+      "id": "tgWEjB1Vkdp",
+      "sdkName": "customFields",
+      "name": "Custom Fields",
+      "primaryFieldId": "f3aL4i1JiR1",
+      "fields": [
+        {
+          "id": "f3aL4i1JiR1",
+          "sdkName": "label",
+          "definition": {
+            "name": "Label",
+            "type": "single_line_text",
+            "template": {}
+          }
+        },
+        {
+          "id": "fxnoqDyrV6r",
+          "sdkName": "key",
+          "definition": {
+            "name": "Key",
+            "type": "single_line_text",
+            "template": {}
+          }
+        },
+        {
+          "id": "fdvMKpzi6qb",
+          "sdkName": "object",
+          "definition": {
+            "name": "Object",
+            "type": "single_select",
+            "template": {
+              "options": [
+                {
+                  "value": "eZiS",
+                  "label": "Company",
+                  "color": "purple"
+                },
+                {
+                  "value": "5qCp",
+                  "label": "Contact",
+                  "color": "orange"
+                },
+                {
+                  "value": "6nHa",
+                  "label": "Deal",
+                  "color": "blue"
+                },
+                {
+                  "value": "ifvp",
+                  "label": "Lead",
+                  "color": "gray"
+                }
+              ],
+              "disableColors": false
+            }
+          }
+        },
+        {
+          "id": "fq1j7Vzx8dn",
+          "sdkName": "type",
+          "definition": {
+            "name": "Type",
+            "type": "single_select",
+            "template": {
+              "options": [
+                {
+                  "value": "2Kxg",
+                  "label": "Text",
+                  "color": "purple"
+                },
+                {
+                  "value": "8or7",
+                  "label": "Long Text",
+                  "color": "orange"
+                },
+                {
+                  "value": "9ynJ",
+                  "label": "Number",
+                  "color": "blue"
+                },
+                {
+                  "value": "ehPg",
+                  "label": "Currency",
+                  "color": "gray"
+                },
+                {
+                  "value": "dhiE",
+                  "label": "Date",
+                  "color": "red"
+                },
+                {
+                  "value": "ntaA",
+                  "label": "Select",
+                  "color": "yellow"
+                },
+                {
+                  "value": "8WZx",
+                  "label": "Multi Select",
+                  "color": "green"
+                },
+                {
+                  "value": "xihf",
+                  "label": "Checkbox",
+                  "color": "pink"
+                },
+                {
+                  "value": "2vrh",
+                  "label": "URL",
+                  "color": "lime"
+                }
+              ],
+              "disableColors": false
+            }
+          }
+        },
+        {
+          "id": "f7X6Adt7hw5",
+          "sdkName": "options",
+          "definition": {
+            "name": "Options",
+            "type": "long_text",
+            "template": {}
+          }
+        },
+        {
+          "id": "fbB9fubatgY",
+          "sdkName": "helpText",
+          "definition": {
+            "name": "Help Text",
+            "type": "single_line_text",
+            "template": {}
+          }
+        },
+        {
+          "id": "fc2iWaeDmos",
+          "sdkName": "position",
+          "definition": {
+            "name": "Position",
+            "type": "number",
+            "template": {
+              "numberFormat": "local",
+              "decimalPlaces": 0
+            }
+          }
+        },
+        {
+          "id": "fvzciqATYub",
+          "sdkName": "required",
+          "definition": {
+            "name": "Required",
+            "type": "checkbox",
+            "template": {}
+          }
+        },
+        {
+          "id": "feXEnKRFipB",
+          "sdkName": "archived",
+          "definition": {
+            "name": "Archived",
+            "type": "checkbox",
+            "template": {}
+          }
+        }
+      ]
+    },
+    {
+      "id": "tjK7bH3Wbov",
+      "sdkName": "choices",
+      "name": "Choices",
+      "primaryFieldId": "fxsf4pi6Pi8",
+      "fields": [
+        {
+          "id": "fxsf4pi6Pi8",
+          "sdkName": "label",
+          "definition": {
+            "name": "Label",
+            "type": "single_line_text",
+            "template": {}
+          }
+        },
+        {
+          "id": "fk1ogAYJ7wS",
+          "sdkName": "list",
+          "definition": {
+            "name": "List",
+            "type": "single_select",
+            "template": {
+              "options": [
+                {
+                  "value": "1cDb",
+                  "label": "Industry",
+                  "color": "purple"
+                },
+                {
+                  "value": "8Un3",
+                  "label": "Lead Source",
+                  "color": "orange"
+                },
+                {
+                  "value": "v87G",
+                  "label": "Lost Reason",
+                  "color": "blue"
+                },
+                {
+                  "value": "mN3k",
+                  "label": "Disqualify Reason",
+                  "color": "gray"
+                }
+              ],
+              "disableColors": false
+            }
+          }
+        },
+        {
+          "id": "ftQjPmpNmGS",
+          "sdkName": "position",
+          "definition": {
+            "name": "Position",
+            "type": "number",
+            "template": {
+              "numberFormat": "local",
+              "decimalPlaces": 0
+            }
+          }
+        },
+        {
+          "id": "frhJazqcpJX",
+          "sdkName": "archived",
+          "definition": {
+            "name": "Archived",
+            "type": "checkbox",
+            "template": {}
+          }
+        }
+      ]
+    },
+    {
+      "id": "tuksMJej2xn",
+      "sdkName": "tags",
+      "name": "Tags",
+      "primaryFieldId": "f1ZfMqLVdo3",
+      "fields": [
+        {
+          "id": "f1ZfMqLVdo3",
+          "sdkName": "name",
+          "definition": {
+            "name": "Name",
+            "type": "single_line_text",
+            "template": {}
+          }
+        },
+        {
+          "id": "fg9YAWB8dEL",
+          "sdkName": "color",
+          "definition": {
+            "name": "Color",
+            "type": "single_line_text",
+            "template": {}
+          }
+        },
+        {
+          "id": "fsTTW2ghjxH",
+          "sdkName": "description",
+          "definition": {
+            "name": "Description",
+            "type": "single_line_text",
+            "template": {}
+          }
+        }
+      ]
+    },
+    {
+      "id": "t4Tap6HxktG",
+      "sdkName": "notifications",
+      "name": "Notifications",
+      "primaryFieldId": "ftUpcWZbhXm",
+      "fields": [
+        {
+          "id": "ftUpcWZbhXm",
+          "sdkName": "title",
+          "definition": {
+            "name": "Title",
+            "type": "single_line_text",
+            "template": {}
+          }
+        },
+        {
+          "id": "fpP9R5pZ9Yi",
+          "sdkName": "recipientId",
+          "definition": {
+            "name": "Recipient Id",
+            "type": "single_line_text",
+            "template": {}
+          }
+        },
+        {
+          "id": "f62yGofn26n",
+          "sdkName": "kind",
+          "definition": {
+            "name": "Kind",
+            "type": "single_line_text",
+            "template": {}
+          }
+        },
+        {
+          "id": "ft1U1wbTj5p",
+          "sdkName": "body",
+          "definition": {
+            "name": "Body",
+            "type": "long_text",
+            "template": {}
+          }
+        },
+        {
+          "id": "fkvcJTSw1D2",
+          "sdkName": "link",
+          "definition": {
+            "name": "Link",
+            "type": "single_line_text",
+            "template": {}
+          }
+        },
+        {
+          "id": "f5zTffq17zt",
+          "sdkName": "entityType",
+          "definition": {
+            "name": "Entity Type",
+            "type": "single_line_text",
+            "template": {}
+          }
+        },
+        {
+          "id": "fe7UYCK52Xx",
+          "sdkName": "entityId",
+          "definition": {
+            "name": "Entity Id",
+            "type": "single_line_text",
+            "template": {}
+          }
+        },
+        {
+          "id": "fm142jiFdux",
+          "sdkName": "actorId",
+          "definition": {
+            "name": "Actor Id",
+            "type": "single_line_text",
+            "template": {}
+          }
+        },
+        {
+          "id": "fg1DYn3muUt",
+          "sdkName": "readAt",
+          "definition": {
+            "name": "Read At",
+            "type": "datetime",
+            "template": {
+              "timezone": "",
+              "dateFormat": "local",
+              "timeFormat": "12h",
+              "displayTimeZone": false
+            }
+          }
+        },
+        {
+          "id": "fvKnm7HneeX",
+          "sdkName": "occurredAt",
+          "definition": {
+            "name": "Occurred At",
+            "type": "datetime",
+            "template": {
+              "timezone": "",
+              "dateFormat": "local",
+              "timeFormat": "12h",
+              "displayTimeZone": false
+            }
+          }
+        }
+      ]
+    },
+    {
+      "id": "tbm99tyDw2j",
+      "sdkName": "events",
+      "name": "Events",
+      "primaryFieldId": "faN8hfCD6X8",
+      "fields": [
+        {
+          "id": "faN8hfCD6X8",
+          "sdkName": "summary",
+          "definition": {
+            "name": "Summary",
+            "type": "single_line_text",
+            "template": {}
+          }
+        },
+        {
+          "id": "fosdbJDYnAM",
+          "sdkName": "kind",
+          "definition": {
+            "name": "Kind",
+            "type": "single_line_text",
+            "template": {}
+          }
+        },
+        {
+          "id": "fsGffBmMsqi",
+          "sdkName": "entityType",
+          "definition": {
+            "name": "Entity Type",
+            "type": "single_line_text",
+            "template": {}
+          }
+        },
+        {
+          "id": "f5Hn4QUgniH",
+          "sdkName": "entityId",
+          "definition": {
+            "name": "Entity Id",
+            "type": "single_line_text",
+            "template": {}
+          }
+        },
+        {
+          "id": "fgKEwg7DHRC",
+          "sdkName": "actorId",
+          "definition": {
+            "name": "Actor Id",
+            "type": "single_line_text",
+            "template": {}
+          }
+        },
+        {
+          "id": "fonicM9UiRe",
+          "sdkName": "data",
+          "definition": {
+            "name": "Data",
+            "type": "long_text",
+            "template": {}
+          }
+        },
+        {
+          "id": "fpQCHVhoMDH",
+          "sdkName": "occurredAt",
+          "definition": {
+            "name": "Occurred At",
+            "type": "datetime",
+            "template": {
+              "timezone": "",
+              "dateFormat": "local",
+              "timeFormat": "12h",
+              "displayTimeZone": false
+            }
+          }
+        },
+        {
+          "id": "fixsjnLw6TL",
+          "sdkName": "companyId",
+          "definition": {
+            "name": "Company Id",
+            "type": "single_line_text",
+            "template": {}
+          }
+        },
+        {
+          "id": "fdSjfjDP2fd",
+          "sdkName": "contactId",
+          "definition": {
+            "name": "Contact Id",
+            "type": "single_line_text",
+            "template": {}
+          }
+        },
+        {
+          "id": "fo467uYXbX3",
+          "sdkName": "dealId",
+          "definition": {
+            "name": "Deal Id",
+            "type": "single_line_text",
+            "template": {}
+          }
+        },
+        {
+          "id": "fuuJX8GxBrR",
+          "sdkName": "leadId",
+          "definition": {
+            "name": "Lead Id",
+            "type": "single_line_text",
+            "template": {}
+          }
+        }
+      ]
+    },
+    {
+      "id": "tnrDWMBpceH",
+      "sdkName": "documents",
+      "name": "Documents",
+      "primaryFieldId": "ffC3BrpZwB6",
+      "fields": [
+        {
+          "id": "ffC3BrpZwB6",
+          "sdkName": "name",
+          "definition": {
+            "name": "Name",
+            "type": "single_line_text",
+            "template": {}
+          }
+        },
+        {
+          "id": "fijkZLH2FoY",
+          "sdkName": "url",
+          "definition": {
+            "name": "Url",
+            "type": "url",
+            "template": {}
+          }
+        },
+        {
+          "id": "feFHVi2sC7P",
+          "sdkName": "size",
+          "definition": {
+            "name": "Size",
+            "type": "number",
+            "template": {
+              "numberFormat": "local",
+              "decimalPlaces": 0
+            }
+          }
+        },
+        {
+          "id": "f4gM6gx3qbX",
+          "sdkName": "contentType",
+          "definition": {
+            "name": "Content Type",
+            "type": "single_line_text",
+            "template": {}
+          }
+        },
+        {
+          "id": "fsnqsM2aeWH",
+          "sdkName": "companyId",
+          "definition": {
+            "name": "Company Id",
+            "type": "single_line_text",
+            "template": {}
+          }
+        },
+        {
+          "id": "fbME6fhGwyn",
+          "sdkName": "contactId",
+          "definition": {
+            "name": "Contact Id",
+            "type": "single_line_text",
+            "template": {}
+          }
+        },
+        {
+          "id": "firpEAspkct",
+          "sdkName": "dealId",
+          "definition": {
+            "name": "Deal Id",
+            "type": "single_line_text",
+            "template": {}
+          }
+        },
+        {
+          "id": "feBsiAr147k",
+          "sdkName": "leadId",
+          "definition": {
+            "name": "Lead Id",
+            "type": "single_line_text",
+            "template": {}
+          }
+        },
+        {
+          "id": "f3dJnTWo7xX",
+          "sdkName": "uploadedById",
+          "definition": {
+            "name": "Uploaded By Id",
+            "type": "single_line_text",
+            "template": {}
+          }
+        }
+      ]
+    },
+    {
+      "id": "tjWhBTfdUCF",
+      "sdkName": "quotas",
+      "name": "Quotas",
+      "primaryFieldId": "foqCw22KhAb",
+      "fields": [
+        {
+          "id": "foqCw22KhAb",
+          "sdkName": "memberId",
+          "definition": {
+            "name": "Member Id",
+            "type": "single_line_text",
+            "template": {}
+          }
+        },
+        {
+          "id": "f5xHAVQ7q9z",
+          "sdkName": "period",
+          "definition": {
+            "name": "Period",
+            "type": "single_select",
+            "template": {
+              "options": [
+                {
+                  "value": "g2oX",
+                  "label": "Month",
+                  "color": "purple"
+                },
+                {
+                  "value": "1nJ6",
+                  "label": "Quarter",
+                  "color": "orange"
+                },
+                {
+                  "value": "nWLi",
+                  "label": "Year",
+                  "color": "blue"
+                }
+              ],
+              "disableColors": false
+            }
+          }
+        },
+        {
+          "id": "fsFzxjc6Ain",
+          "sdkName": "periodStart",
+          "definition": {
+            "name": "Period Start",
+            "type": "date",
+            "template": {
+              "dateFormat": "local"
+            }
+          }
+        },
+        {
+          "id": "fookdg4N19Y",
+          "sdkName": "metric",
+          "definition": {
+            "name": "Metric",
+            "type": "single_select",
+            "template": {
+              "options": [
+                {
+                  "value": "7uek",
+                  "label": "Revenue",
+                  "color": "purple"
+                },
+                {
+                  "value": "rmxD",
+                  "label": "Deals Won",
+                  "color": "orange"
+                },
+                {
+                  "value": "16yC",
+                  "label": "Meetings",
+                  "color": "blue"
+                },
+                {
+                  "value": "qz6U",
+                  "label": "Calls",
+                  "color": "gray"
+                }
+              ],
+              "disableColors": false
+            }
+          }
+        },
+        {
+          "id": "fmkEidEtUZv",
+          "sdkName": "target",
+          "definition": {
+            "name": "Target",
+            "type": "number",
+            "template": {
+              "numberFormat": "local",
+              "decimalPlaces": 2
+            }
+          }
+        }
+      ]
+    },
+    {
+      "id": "tvbdB48ctGs",
+      "sdkName": "settings",
+      "name": "Settings",
+      "primaryFieldId": "fbX3X66VvWw",
+      "fields": [
+        {
+          "id": "fbX3X66VvWw",
+          "sdkName": "organizationName",
+          "definition": {
+            "name": "Organization Name",
+            "type": "single_line_text",
+            "template": {}
+          }
+        },
+        {
+          "id": "ffwQ7EkjZW8",
+          "sdkName": "currency",
+          "definition": {
+            "name": "Currency",
+            "type": "single_line_text",
+            "template": {}
+          }
+        },
+        {
+          "id": "f3MSSYzbSVB",
+          "sdkName": "timezone",
+          "definition": {
+            "name": "Timezone",
+            "type": "single_line_text",
+            "template": {}
+          }
+        },
+        {
+          "id": "foiQ24WRCJh",
+          "sdkName": "fiscalYearStartMonth",
+          "definition": {
+            "name": "Fiscal Year Start Month",
+            "type": "number",
+            "template": {
+              "numberFormat": "local",
+              "decimalPlaces": 0
+            }
+          }
+        },
+        {
+          "id": "fii59wTT9no",
+          "sdkName": "logoUrl",
+          "definition": {
+            "name": "Logo Url",
+            "type": "url",
+            "template": {}
+          }
+        },
+        {
+          "id": "f8RG4faUsE7",
+          "sdkName": "brandColor",
+          "definition": {
+            "name": "Brand Color",
+            "type": "single_line_text",
+            "template": {}
+          }
+        },
+        {
+          "id": "fnEdq4oWcS3",
+          "sdkName": "defaultRole",
+          "definition": {
+            "name": "Default Role",
+            "type": "single_line_text",
+            "template": {}
+          }
+        },
+        {
+          "id": "ffpsXyNMVJf",
+          "sdkName": "leadRouting",
+          "definition": {
+            "name": "Lead Routing",
+            "type": "long_text",
+            "template": {}
+          }
+        },
+        {
+          "id": "fg2xFRuzLeB",
+          "sdkName": "quoteDefaults",
+          "definition": {
+            "name": "Quote Defaults",
+            "type": "long_text",
+            "template": {}
+          }
+        },
+        {
+          "id": "f8WAuysZ19N",
+          "sdkName": "nextQuoteNumber",
+          "definition": {
+            "name": "Next Quote Number",
+            "type": "number",
+            "template": {
+              "numberFormat": "local",
+              "decimalPlaces": 0
+            }
+          }
+        },
+        {
+          "id": "fmZqR2wXe5G",
+          "sdkName": "emailFooter",
+          "definition": {
+            "name": "Email Footer",
+            "type": "long_text",
+            "template": {}
+          }
+        },
+        {
+          "id": "f4J3USo8bQf",
+          "sdkName": "mailingAddress",
+          "definition": {
+            "name": "Mailing Address",
+            "type": "long_text",
+            "template": {}
+          }
+        },
+        {
+          "id": "f1ZVGTReTBa",
+          "sdkName": "pagesUrl",
+          "definition": {
+            "name": "Pages Url",
+            "type": "url",
+            "template": {}
+          }
+        },
+        {
+          "id": "fusW3kFncVj",
+          "sdkName": "preferences",
+          "definition": {
+            "name": "Preferences",
+            "type": "long_text",
+            "template": {}
+          }
+        },
+        {
+          "id": "fkPsJVKp2gQ",
+          "sdkName": "seededAt",
+          "definition": {
+            "name": "Seeded At",
+            "type": "datetime",
+            "template": {
+              "timezone": "",
+              "dateFormat": "local",
+              "timeFormat": "12h",
+              "displayTimeZone": false
+            }
+          }
+        },
+        {
+          "id": "fpucjc6wBTR",
+          "sdkName": "demoRemovedAt",
+          "definition": {
+            "name": "Demo Removed At",
+            "type": "datetime",
+            "template": {
+              "timezone": "",
+              "dateFormat": "local",
+              "timeFormat": "12h",
+              "displayTimeZone": false
+            }
+          }
+        }
+      ]
+    },
+    {
+      "id": "ttEu3JcfsFk",
+      "sdkName": "automations",
+      "name": "Automations",
+      "primaryFieldId": "f6qDf3dvsvF",
+      "fields": [
+        {
+          "id": "f6qDf3dvsvF",
+          "sdkName": "name",
+          "definition": {
+            "name": "Name",
+            "type": "single_line_text",
+            "template": {}
+          }
+        },
+        {
+          "id": "fcTbxbYtrbL",
+          "sdkName": "description",
+          "definition": {
+            "name": "Description",
+            "type": "long_text",
+            "template": {}
+          }
+        },
+        {
+          "id": "fuTMt5vMgrf",
+          "sdkName": "trigger",
+          "definition": {
+            "name": "Trigger",
+            "type": "single_line_text",
+            "template": {}
+          }
+        },
+        {
+          "id": "fo6LN49GF5s",
+          "sdkName": "conditions",
+          "definition": {
+            "name": "Conditions",
+            "type": "long_text",
+            "template": {}
+          }
+        },
+        {
+          "id": "ffPSYWeJE2P",
+          "sdkName": "actions",
+          "definition": {
+            "name": "Actions",
+            "type": "long_text",
+            "template": {}
+          }
+        },
+        {
+          "id": "f9is93E3yYx",
+          "sdkName": "active",
+          "definition": {
+            "name": "Active",
+            "type": "checkbox",
+            "template": {}
+          }
+        },
+        {
+          "id": "fphPwimDhpj",
+          "sdkName": "ownerId",
+          "definition": {
+            "name": "Owner Id",
+            "type": "single_line_text",
+            "template": {}
+          }
+        },
+        {
+          "id": "fwWevBwBCF3",
+          "sdkName": "runCount",
+          "definition": {
+            "name": "Run Count",
+            "type": "number",
+            "template": {
+              "numberFormat": "local",
+              "decimalPlaces": 0
+            }
+          }
+        },
+        {
+          "id": "fr5UvhjdK4V",
+          "sdkName": "lastRunAt",
+          "definition": {
+            "name": "Last Run At",
+            "type": "datetime",
+            "template": {
+              "timezone": "",
+              "dateFormat": "local",
+              "timeFormat": "12h",
+              "displayTimeZone": false
+            }
+          }
+        }
+      ]
+    },
+    {
+      "id": "t1DmqVJawnB",
+      "sdkName": "automationRuns",
+      "name": "Automation Runs",
+      "primaryFieldId": "fqAUrnVdXpb",
+      "fields": [
+        {
+          "id": "fqAUrnVdXpb",
+          "sdkName": "automationId",
+          "definition": {
+            "name": "Automation Id",
+            "type": "single_line_text",
+            "template": {}
+          }
+        },
+        {
+          "id": "f6qbUK8ZVn1",
+          "sdkName": "entityType",
+          "definition": {
+            "name": "Entity Type",
+            "type": "single_line_text",
+            "template": {}
+          }
+        },
+        {
+          "id": "f7WHUcNKVzu",
+          "sdkName": "entityId",
+          "definition": {
+            "name": "Entity Id",
+            "type": "single_line_text",
+            "template": {}
+          }
+        },
+        {
+          "id": "fjCFpNaA5pP",
+          "sdkName": "status",
+          "definition": {
+            "name": "Status",
+            "type": "single_select",
+            "template": {
+              "options": [
+                {
+                  "value": "oGD3",
+                  "label": "Succeeded",
+                  "color": "purple"
+                },
+                {
+                  "value": "snji",
+                  "label": "Failed",
+                  "color": "orange"
+                },
+                {
+                  "value": "3hve",
+                  "label": "Skipped",
+                  "color": "blue"
+                }
+              ],
+              "disableColors": false
+            }
+          }
+        },
+        {
+          "id": "fxqbYcbSgG3",
+          "sdkName": "detail",
+          "definition": {
+            "name": "Detail",
+            "type": "long_text",
+            "template": {}
+          }
+        },
+        {
+          "id": "fgLWeM46HTC",
+          "sdkName": "ranAt",
+          "definition": {
+            "name": "Ran At",
+            "type": "datetime",
+            "template": {
+              "timezone": "",
+              "dateFormat": "local",
+              "timeFormat": "12h",
+              "displayTimeZone": false
+            }
+          }
+        }
+      ]
+    },
+    {
+      "id": "tf5qmcK7ALm",
+      "sdkName": "imports",
+      "name": "Imports",
+      "primaryFieldId": "fjpXqhiN1Af",
+      "fields": [
+        {
+          "id": "fjpXqhiN1Af",
+          "sdkName": "fileName",
+          "definition": {
+            "name": "File Name",
+            "type": "single_line_text",
+            "template": {}
+          }
+        },
+        {
+          "id": "f7gkCaM52Nx",
+          "sdkName": "object",
+          "definition": {
+            "name": "Object",
+            "type": "single_select",
+            "template": {
+              "options": [
+                {
+                  "value": "csLZ",
+                  "label": "Companies",
+                  "color": "purple"
+                },
+                {
+                  "value": "uyCB",
+                  "label": "Contacts",
+                  "color": "orange"
+                },
+                {
+                  "value": "bcRj",
+                  "label": "Deals",
+                  "color": "blue"
+                },
+                {
+                  "value": "5QnS",
+                  "label": "Leads",
+                  "color": "gray"
+                }
+              ],
+              "disableColors": false
+            }
+          }
+        },
+        {
+          "id": "f7iYz8xnBLh",
+          "sdkName": "status",
+          "definition": {
+            "name": "Status",
+            "type": "single_select",
+            "template": {
+              "options": [
+                {
+                  "value": "b9o5",
+                  "label": "Running",
+                  "color": "purple"
+                },
+                {
+                  "value": "aTWX",
+                  "label": "Completed",
+                  "color": "orange"
+                },
+                {
+                  "value": "goij",
+                  "label": "Failed",
+                  "color": "blue"
+                },
+                {
+                  "value": "pmfj",
+                  "label": "Undone",
+                  "color": "gray"
+                }
+              ],
+              "disableColors": false
+            }
+          }
+        },
+        {
+          "id": "ftrSmAXzUKm",
+          "sdkName": "rowCount",
+          "definition": {
+            "name": "Row Count",
+            "type": "number",
+            "template": {
+              "numberFormat": "local",
+              "decimalPlaces": 0
+            }
+          }
+        },
+        {
+          "id": "f3q1YefHd1a",
+          "sdkName": "createdCount",
+          "definition": {
+            "name": "Created Count",
+            "type": "number",
+            "template": {
+              "numberFormat": "local",
+              "decimalPlaces": 0
+            }
+          }
+        },
+        {
+          "id": "fgyZpaBPXSc",
+          "sdkName": "updatedCount",
+          "definition": {
+            "name": "Updated Count",
+            "type": "number",
+            "template": {
+              "numberFormat": "local",
+              "decimalPlaces": 0
+            }
+          }
+        },
+        {
+          "id": "fa4PKN53vvK",
+          "sdkName": "skippedCount",
+          "definition": {
+            "name": "Skipped Count",
+            "type": "number",
+            "template": {
+              "numberFormat": "local",
+              "decimalPlaces": 0
+            }
+          }
+        },
+        {
+          "id": "fkzzmDvN6Bz",
+          "sdkName": "errors",
+          "definition": {
+            "name": "Errors",
+            "type": "long_text",
+            "template": {}
+          }
+        },
+        {
+          "id": "ffJB4qcHfQc",
+          "sdkName": "mapping",
+          "definition": {
+            "name": "Mapping",
+            "type": "long_text",
+            "template": {}
+          }
+        },
+        {
+          "id": "feiBwKCTDz5",
+          "sdkName": "actorId",
+          "definition": {
+            "name": "Actor Id",
+            "type": "single_line_text",
+            "template": {}
+          }
+        },
+        {
+          "id": "feXeugdXDTU",
+          "sdkName": "undoneAt",
+          "definition": {
+            "name": "Undone At",
+            "type": "datetime",
+            "template": {
+              "timezone": "",
+              "dateFormat": "local",
+              "timeFormat": "12h",
+              "displayTimeZone": false
+            }
+          }
+        }
+      ]
+    }
+  ]
+}

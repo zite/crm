@@ -1,0 +1,16 @@
+{
+  "extends": "../../apps/crm/tsconfig.app.json",
+  "compilerOptions": {
+    "noEmit": true,
+    "incremental": false,
+    "paths": {
+      "zitejs/db": ["../../.zite/db.ts"],
+      "zitejs/backend": ["../../apps/crm/.zite/backend.ts"],
+      "zitejs/backend/base": ["../../node_modules/zitejs/dist/esm/backend/index.d.ts"],
+      "zitejs/auth": ["../../node_modules/zitejs/dist/esm/auth/index.d.ts"],
+      "zitejs/email": ["../../apps/crm/.zite/integrations/email.ts"],
+      "zitejs/api": ["../../apps/crm/.zite/api.ts"]
+    }
+  },
+  "include": ["./**/*.ts", "./**/*.tsx"]
+}
