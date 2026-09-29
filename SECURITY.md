@@ -22,8 +22,8 @@ hosting) go to security@zite.com too, but say which you mean.
 
 ## What we already know and treat as by design
 
-- The demo data is public sample content: a fictional company, its pipeline and
-  contacts.
+- The sample data an admin can load from Settings → General is public
+  content: a fictional company, its pipeline and contacts.
 - CRM Pages is an external app serving web forms, meeting booking, quotes and
   unsubscribe links. Those pages are deliberately public and unauthenticated;
   each is scoped to one record by an unguessable id.

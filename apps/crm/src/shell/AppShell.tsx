@@ -1,8 +1,6 @@
 import { Warning } from '@phosphor-icons/react';
-import { useEffect, useState, type ReactNode } from 'react';
+import type { ReactNode } from 'react';
 import { useLocation, useNavigate } from 'react-router-dom';
-import { toast } from 'sonner';
-import { seedWorkspace } from 'zitejs/api';
 import { Button } from '../ui/Button';
 import { EmptyState } from '../ui/Layout';
 import { TooltipProvider } from '../ui/Tooltip';
@@ -85,42 +83,19 @@ function Shell({ children }: { children: ReactNode }) {
   );
 }
 
-/** Loads the workspace, seeds the demo on a fresh install, then renders the app. */
+/**
+ * Loads the workspace, then renders the app. A fresh install opens straight
+ * into it, empty: the sample data only loads when an admin asks for it from
+ * Settings → Sample data.
+ */
 export function AppShell({ children }: { children: ReactNode }) {
   const query = useWorkspaceQuery();
-  const [seeding, setSeeding] = useState(false);
-  const [seedLabel, setSeedLabel] = useState<string | null>(null);
 
-  useEffect(() => {
-    if (!query.data?.needsSeed || seeding) return;
-    let cancelled = false;
-    setSeeding(true);
-    (async () => {
-      try {
-        for (let i = 0; i < 12; i++) {
-          const result = await seedWorkspace({});
-          if (cancelled) return;
-          setSeedLabel(result.label);
-          if (result.done) break;
-        }
-        await query.refetch();
-      } catch (error) {
-        toast.error('Couldn’t load the demo data. Reload to try again.');
-        console.error(error);
-      } finally {
-        if (!cancelled) setSeeding(false);
-      }
-    })();
-    return () => {
-      cancelled = true;
-    };
-  }, [query.data?.needsSeed]);
-
-  if (query.isPending || (query.data?.needsSeed && seeding)) {
+  if (query.isPending) {
     return (
       <div className="flex h-dvh flex-col items-center justify-center gap-4 bg-paper">
         <div className="h-8 w-8 animate-spin rounded-full border-2 border-line-strong border-t-accent" />
-        <p className="text-ui text-ink-2">{seeding ? `Setting up your workspace — ${seedLabel ?? 'getting started'}…` : 'Loading…'}</p>
+        <p className="text-ui text-ink-2">Loading…</p>
       </div>
     );
   }

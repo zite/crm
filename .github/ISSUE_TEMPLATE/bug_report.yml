@@ -41,9 +41,9 @@ body:
     attributes:
       label: What data were you on
       options:
-        - The demo data, untouched
-        - The demo data, with my own changes on top
-        - My own data, demo removed
+        - The sample data, untouched
+        - The sample data, with my own changes on top
+        - My own data (sample data removed or never loaded)
     validations:
       required: true
 

@@ -1,5 +1,5 @@
 /**
- * The demo data is generated from a fixed seed, so every install gets the same
+ * The sample data is generated from a fixed seed, so every load gets the same
  * organization and a screenshot taken today matches one taken tomorrow.
  * Never call Math.random() in the seed.
  */

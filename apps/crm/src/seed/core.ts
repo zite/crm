@@ -2,7 +2,7 @@ import { zite } from 'zitejs/db';
 import type { Actor } from '@project/shared/server/actor';
 import { colorFor } from '@project/shared/server/actor';
 import { getSettings, updateSettings, type OrgSettings } from '@project/shared/server/settings';
-import { chunked, str, withRetry } from '@project/shared/server/sql';
+import { bool, chunked, str, withRetry } from '@project/shared/server/sql';
 import { periodStart, todayIn } from '@project/shared/dates';
 import { scoreLead } from '@project/shared/leads';
 import { randomToken, slugify } from '@project/shared/tokens';
@@ -33,14 +33,21 @@ import {
 } from './data';
 
 /**
- * The demo organization, built in phases so no single call runs long. Each
- * phase is idempotent: it looks for what it would create and returns early if
- * it is already there, so a seed can be resumed or re-run safely.
+ * The sample organization, loaded when an admin asks for it from Settings →
+ * Sample data, and built in phases so no single call runs long. Each phase is
+ * idempotent: it looks for what it would create and returns early if it is
+ * already there, so a load can be resumed safely.
+ *
+ * Only an empty workspace can load it (see seedWorkspace), but "empty" means
+ * no companies, contacts, deals or leads. The admin may already have renamed
+ * the organization, added a pipeline, a tag or a teammate. Those are reused or
+ * left alone, never overwritten, and a removal keeps them because they were
+ * created before `seededAt`.
  *
  * Everything is generated from a fixed seed (see rng.ts) and dated relative to
  * today, so the board, the reports and the "due today" counts always look
- * alive. The person installing the template becomes the Admin and is given a
- * real slice of the work: deals, tasks due today, leads to triage and an inbox.
+ * alive. The admin who loads it is given a real slice of the work: deals,
+ * tasks due today, leads to triage and an inbox.
  */
 
 export type SeedContext = { actor: Actor; today: string; settings: OrgSettings; rng: Rng };
@@ -64,18 +71,23 @@ function ownerFor(key: string, members: Map<string, string>, actorId: string) {
   return members.get(key) ?? actorId;
 }
 
+/** Rows keyed by a lowercased name, for "create only what isn't there yet". */
+async function namesIn(table: string, column = 'name') {
+  const { rows } = await zite.sql({ query: `SELECT "${column}" AS "k" FROM "${table}"`, params: [] });
+  return new Set(rows.map(r => String(r.k ?? '').trim().toLowerCase()));
+}
+
 export const seedOrg: SeedPhase = {
   key: 'org',
   label: 'organization',
   run: async ({ actor, today, settings, rng }) => {
+    // Only details still at their fresh-install defaults: an admin who named
+    // the organization before loading the sample keeps their own name.
     await updateSettings(settings.id, {
-      organizationName: ORG.name,
-      currency: ORG.currency,
-      timezone: ORG.timezone,
-      mailingAddress: ORG.address,
-      emailFooter: ORG.footer,
-      seededAt: new Date().toISOString(),
-      preferences: settings.preferences,
+      ...(settings.organizationName === 'Your organization' ? { organizationName: ORG.name } : {}),
+      ...(settings.timezone === 'America/New_York' ? { timezone: ORG.timezone } : {}),
+      ...(settings.mailingAddress === '' ? { mailingAddress: ORG.address } : {}),
+      ...(settings.emailFooter === '' ? { emailFooter: ORG.footer } : {}),
     });
 
     const existing = await zite.members.findAll({ limit: 200 });
@@ -94,64 +106,75 @@ export const seedOrg: SeedPhase = {
     }));
     if (toCreate.length) await chunked(toCreate, async batch => void (await zite.members.bulkCreate({ records: batch })));
 
-    // The installer is the Admin, and is given a title so they look like a teammate.
-    const me = (await zite.members.findOne({ id: actor.id })) ?? null;
-    if (me && !me.title) {
-      await withRetry(() => zite.members.update({ id: actor.id, record: { title: 'Head of Revenue', timezone: ORG.timezone, color: colorFor(actor.email), emailSignature: `${actor.name}\nHead of Revenue · ${ORG.name}` } }));
-    }
+    // The admin's own teammate record is left alone: it is real, and a removal
+    // could not tell a title the sample gave them from one they chose.
 
     const members = await memberMap();
-    const teams = await zite.teams.findAll({ limit: 20 });
-    if (!teams.records.length) {
+    const teamNames = await namesIn('Teams');
+    const missingTeams = TEAMS.filter(t => !teamNames.has(t.name.toLowerCase()));
+    if (missingTeams.length) {
       const created = await zite.teams.bulkCreate({
-        records: TEAMS.map(t => ({ name: t.name, description: t.description, leadId: members.get(t.lead) ?? null, color: null })),
+        records: missingTeams.map(t => ({ name: t.name, description: t.description, leadId: members.get(t.lead) ?? null, color: null })),
       });
-      const teamByKey = new Map(TEAMS.map((t, i) => [t.key, created.records[i].id]));
+      const teamByKey = new Map(missingTeams.map((t, i) => [t.key, created.records[i].id]));
       for (const m of MEMBERS) {
         const id = members.get(m.key);
-        if (id && m.team !== 'none') await withRetry(() => zite.members.update({ id, record: { teamId: teamByKey.get(m.team) ?? null } }));
+        const teamId = teamByKey.get(m.team);
+        if (id && teamId) await withRetry(() => zite.members.update({ id, record: { teamId } }));
       }
-      if (teamByKey.get('ae')) await withRetry(() => zite.members.update({ id: actor.id, record: { teamId: teamByKey.get('ae') } }));
     }
 
-    // Inbound leads rotate between the two SDRs, so a Round Robin form has a pool.
+    // Inbound leads rotate between the two SDRs, so a Round Robin form has a
+    // pool. Only over the fresh-install rotation (nobody, or just this admin);
+    // a removal rebuilds it from whoever is left.
     const routingPool = [members.get('marcus'), members.get('aisha')].filter((id): id is string => Boolean(id));
     if (routingPool.length) {
       const current = await getSettings();
-      if (!current.leadRouting.memberIds.length) {
+      const pool = current.leadRouting.memberIds;
+      if (current.leadRouting.mode === 'round_robin' && (!pool.length || (pool.length === 1 && pool[0] === actor.id))) {
         await updateSettings(current.id, { leadRouting: { mode: 'round_robin', memberIds: routingPool, memberId: null, cursor: 0 } });
       }
     }
 
-    const choices = await zite.choices.findAll({ limit: 5 });
-    if (!choices.records.length) {
-      const records = [
-        ...INDUSTRIES.map((label, i) => ({ label, list: 'Industry', position: i })),
-        ...LEAD_SOURCES.map((label, i) => ({ label, list: 'Lead Source', position: i })),
-        ...LOST_REASONS.map((label, i) => ({ label, list: 'Lost Reason', position: i })),
-        ...DISQUALIFY_REASONS.map((label, i) => ({ label, list: 'Disqualify Reason', position: i })),
-      ];
-      await chunked(records, async batch => void (await zite.choices.bulkCreate({ records: batch })));
+    // A fresh install already has starter lost, disqualify and lead-source
+    // lists; the sample adds the values it uses that aren't on them yet.
+    const { rows: choiceRows } = await zite.sql({ query: `SELECT "list", "label", "position" FROM "Choices"`, params: [] });
+    const haveChoice = new Set(choiceRows.map(r => `${String(r.list)}\u0000${String(r.label ?? '').trim().toLowerCase()}`));
+    const nextPosition = new Map<string, number>();
+    for (const r of choiceRows) nextPosition.set(String(r.list), Math.max(nextPosition.get(String(r.list)) ?? 0, Number(r.position ?? 0) + 1));
+    const choiceRecords: Array<Record<string, unknown>> = [];
+    for (const [list, labels] of [
+      ['Industry', INDUSTRIES],
+      ['Lead Source', LEAD_SOURCES],
+      ['Lost Reason', LOST_REASONS],
+      ['Disqualify Reason', DISQUALIFY_REASONS],
+    ] as Array<[string, string[]]>) {
+      for (const label of labels) {
+        if (haveChoice.has(`${list}\u0000${label.toLowerCase()}`)) continue;
+        const position = nextPosition.get(list) ?? 0;
+        nextPosition.set(list, position + 1);
+        choiceRecords.push({ label, list, position });
+      }
     }
+    if (choiceRecords.length) await chunked(choiceRecords, async batch => void (await zite.choices.bulkCreate({ records: batch })));
 
-    const tags = await zite.tags.findAll({ limit: 5 });
-    if (!tags.records.length) await zite.tags.bulkCreate({ records: TAGS.map(t => ({ name: t.name, color: t.color, description: t.description })) });
+    const tagNames = await namesIn('Tags');
+    const missingTags = TAGS.filter(t => !tagNames.has(t.name.toLowerCase()));
+    if (missingTags.length) await zite.tags.bulkCreate({ records: missingTags.map(t => ({ name: t.name, color: t.color, description: t.description })) });
 
-    const fields = await zite.customFields.findAll({ limit: 5 });
-    if (!fields.records.length) {
-      await zite.customFields.bulkCreate({
-        records: [
-          { label: 'Sites', key: 'sites', object: 'Company', type: 'Number', position: 0, helpText: 'Warehouses, depots or yards they run' },
-          { label: 'Current system', key: 'current_system', object: 'Company', type: 'Select', options: JSON.stringify(['Spreadsheets', 'Homegrown', 'Legacy WMS', 'Competitor', 'None']), position: 1 },
-          { label: 'Competitor', key: 'competitor', object: 'Deal', type: 'Select', options: JSON.stringify(['None', 'Longhaul', 'Vantix', 'In-house build', 'Unknown']), position: 0, helpText: 'Who else they are looking at' },
-          { label: 'Preferred channel', key: 'preferred_channel', object: 'Contact', type: 'Select', options: JSON.stringify(['Email', 'Phone', 'Text', 'LinkedIn']), position: 0 },
-        ],
-      });
-    }
+    const fieldKeys = await namesIn('CustomFields', 'key');
+    const sampleFields = [
+      { label: 'Sites', key: 'sites', object: 'Company', type: 'Number', position: 0, helpText: 'Warehouses, depots or yards they run' },
+      { label: 'Current system', key: 'current_system', object: 'Company', type: 'Select', options: JSON.stringify(['Spreadsheets', 'Homegrown', 'Legacy WMS', 'Competitor', 'None']), position: 1 },
+      { label: 'Competitor', key: 'competitor', object: 'Deal', type: 'Select', options: JSON.stringify(['None', 'Longhaul', 'Vantix', 'In-house build', 'Unknown']), position: 0, helpText: 'Who else they are looking at' },
+      { label: 'Preferred channel', key: 'preferred_channel', object: 'Contact', type: 'Select', options: JSON.stringify(['Email', 'Phone', 'Text', 'LinkedIn']), position: 0 },
+    ].filter(f => !fieldKeys.has(f.key));
+    if (sampleFields.length) await zite.customFields.bulkCreate({ records: sampleFields });
 
-    const products = await zite.products.findAll({ limit: 3 });
-    if (!products.records.length) {
-      await zite.products.bulkCreate({ records: PRODUCTS.map(p => ({ name: p.name, sku: p.sku, description: p.description, unitPrice: p.price, billing: p.billing, category: p.category, active: true })) });
+    const productNames = await namesIn('Products');
+    const missingProducts = PRODUCTS.filter(p => !productNames.has(p.name.toLowerCase()));
+    if (missingProducts.length) {
+      await zite.products.bulkCreate({ records: missingProducts.map(p => ({ name: p.name, sku: p.sku, description: p.description, unitPrice: p.price, billing: p.billing, category: p.category, active: true })) });
     }
   },
 };
@@ -160,13 +183,24 @@ export const seedPipelines: SeedPhase = {
   key: 'pipelines',
   label: 'pipelines',
   run: async () => {
-    const existing = await zite.pipelines.findAll({ limit: 5 });
-    if (existing.records.length) return;
-    for (const [i, p] of PIPELINES.entries()) {
-      const pipeline = await zite.pipelines.create({ record: { name: p.name, description: p.description, position: i, isDefault: p.isDefault, archived: false } });
+    // The sample's two pipelines sit beside the starter "Sales" one rather than
+    // replacing it, so removing the sample leaves the admin's own untouched.
+    const { rows } = await zite.sql({ query: `SELECT id, "name", "isDefault", COALESCE("position", 0) AS "position" FROM "Pipelines"`, params: [] });
+    const have = new Set(rows.map(r => String(r.name ?? '').trim().toLowerCase()));
+    let position = rows.reduce((max, r) => Math.max(max, Number(r.position ?? 0) + 1), 0);
+    for (const p of PIPELINES) {
+      if (have.has(p.name.toLowerCase())) continue;
+      const pipeline = await withRetry(() => zite.pipelines.create({ record: { name: p.name, description: p.description, position: position++, isDefault: false, archived: false } }));
       await zite.stages.bulkCreate({
         records: p.stages.map((s, j) => ({ name: s.name, pipelineId: pipeline.id, position: j, probability: s.probability, kind: s.kind, rottingDays: s.rottingDays, guidance: s.guidance || null, archived: false })),
       });
+      // The board opens on the default pipeline, which should be the one with
+      // the sample's deals on it. A removal makes the first pipeline left the
+      // default again.
+      if (p.isDefault) {
+        for (const r of rows) if (bool(r.isDefault)) await withRetry(() => zite.pipelines.update({ id: String(r.id), record: { isDefault: false } }));
+        await withRetry(() => zite.pipelines.update({ id: pipeline.id, record: { isDefault: true } }));
+      }
     }
   },
 };
@@ -311,10 +345,13 @@ export const seedDeals: SeedPhase = {
       zite.sql({ query: `SELECT id, "name", "isDefault" FROM "Pipelines"`, params: [] }),
       zite.sql({ query: `SELECT id, "name", "companyId", "title" FROM "Contacts" ORDER BY created_at`, params: [] }),
       zite.sql({ query: `SELECT id, "name" FROM "Tags"`, params: [] }),
-      zite.sql({ query: `SELECT id, "name", "unitPrice", "billing" FROM "Products" ORDER BY created_at`, params: [] }),
+      // The sample's own price book only: products the admin added first keep out of its deals.
+      zite.sql({ query: `SELECT id, "name", "unitPrice", "billing" FROM "Products" WHERE "name" IN (${PRODUCTS.map((_, i) => `$${i + 1}`).join(', ')}) ORDER BY created_at`, params: PRODUCTS.map(p => p.name) }),
     ]);
-    const newPipeline = pipelines.find(p => p.isDefault === true) ?? pipelines[0];
-    const renewalPipeline = pipelines.find(p => String(p.id) !== String(newPipeline.id)) ?? newPipeline;
+    // By name: the workspace may also have its own starter pipeline.
+    const byName = (name: string) => pipelines.find(p => String(p.name ?? '').trim().toLowerCase() === name.toLowerCase());
+    const newPipeline = byName(PIPELINES[0].name) ?? pipelines.find(p => p.isDefault === true) ?? pipelines[0];
+    const renewalPipeline = byName(PIPELINES[1].name) ?? newPipeline;
     const newStages = stages.filter(s => String(s.pipelineId) === String(newPipeline.id));
     const renewalStages = stages.filter(s => String(s.pipelineId) === String(renewalPipeline.id));
     const openNew = newStages.filter(s => s.kind === 'Open');

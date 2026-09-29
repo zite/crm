@@ -13,6 +13,7 @@ import { useInvalidateWorkspace, useWorkspace } from '../../lib/workspace';
 import { OrgMark } from '../../glyphs';
 import { Explainer, Group, ReadOnlyValue, SaveBar, SectionHead, SettingRow } from './kit';
 import { MONTHS, timezonesWith } from './timezones';
+import { LoadSample, useLoadSample } from './SampleLoad';
 
 type SaveCurrency = NonNullable<Parameters<typeof updateOrgSettings>[0]['currency']>;
 
@@ -24,6 +25,11 @@ export function GeneralSection() {
   const ws = useWorkspace();
   const invalidate = useInvalidateWorkspace();
   const s = ws.settings;
+  // Offered only to an admin while the workspace is still empty, and kept on
+  // screen while it runs so a refetch mid-load can't pull it away. The server
+  // refuses on the same rule, so a stale offer only ever shows an error.
+  const sample = useLoadSample();
+  const offerSample = (ws.isAdmin && ws.sample.canLoad && !sample.checking) || sample.load.isPending;
 
   const initial = useMemo(
     () => ({
@@ -187,6 +193,12 @@ export function GeneralSection() {
           </div>
         )}
       </Group>
+
+      {offerSample && (
+        <div className="border-t border-line pt-6">
+          <LoadSample {...sample} />
+        </div>
+      )}
     </div>
   );
 }

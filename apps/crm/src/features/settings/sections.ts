@@ -1,4 +1,5 @@
 import type { Capability } from '@project/shared/roles';
+import type { WorkspaceApi } from '../../lib/workspace';
 
 /**
  * Every settings section, in the order the nav shows them. Adding one is a row
@@ -12,6 +13,8 @@ export type SettingsSection = {
   group: 'You' | 'Organization' | 'Data';
   /** Hidden from the nav, and refused by the page, without this capability. */
   capability?: Capability;
+  /** Hidden from the nav (the page still opens by its link) unless this holds. */
+  shownWhen?: (ws: WorkspaceApi) => boolean;
   blurb: string;
 };
 
@@ -28,7 +31,15 @@ export const SECTIONS: SettingsSection[] = [
   { slug: 'automations', label: 'Automations', group: 'Organization', capability: 'settings.manage', blurb: 'Rules that do the obvious thing so nobody has to remember to.' },
   { slug: 'import', label: 'Import', group: 'Data', capability: 'data.import', blurb: 'Bring companies, contacts, deals or leads in from a spreadsheet.' },
   { slug: 'export', label: 'Export', group: 'Data', capability: 'data.export', blurb: 'Take any list out as a CSV, complete rather than capped at what is on screen.' },
-  { slug: 'data', label: 'Demo data', group: 'Data', capability: 'settings.manage', blurb: 'Clear the example organization out once your own work has started.' },
+  {
+    slug: 'data',
+    label: 'Sample data',
+    group: 'Data',
+    capability: 'settings.manage',
+    // Only while the sample is loaded; loading it is a quiet control at the bottom of General.
+    shownWhen: ws => ws.sample.loaded,
+    blurb: 'Clear the sample organization out once your own work has started.',
+  },
 ];
 
 export const GROUPS: Array<SettingsSection['group']> = ['You', 'Organization', 'Data'];

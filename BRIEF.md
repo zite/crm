@@ -18,12 +18,16 @@ screen looks and reads.** Then this file, then the files it points at.
 | **CRM** `apps/crm` | staff | Admins, managers, reps, viewers | Internal |
 | **CRM Pages** `apps/crm-pages` | public | Prospects and customers: forms, meeting links, quotes, unsubscribe | External, no sign-in |
 
-Demo organization (seeded on first open by an Admin): **Ashgrove Software**,
-Portland, a B2B SaaS seller with 36 companies, ~80 contacts, 50 deals across
-two pipelines, ~300 activities, tasks, 34 leads, products, quotas and an inbox.
-Everything is generated from a fixed seed and dated relative to today. The
-person installing the template becomes the Admin and owns a real slice of the
-work. Seed code: `apps/crm/src/seed/*`, endpoint `seedWorkspace`.
+A fresh install starts empty: the first person to open it becomes the Admin,
+and bootstrap adds a starter "Sales" pipeline and the standard pick lists.
+Sample organization (loaded by an Admin from the bottom of Settings → General, only while
+the workspace has no companies, contacts, deals or leads): **Ashgrove
+Software**, Portland, a B2B SaaS seller with 36 companies, about 60 contacts,
+about 70 deals across two pipelines, ~500 activities, tasks, 34 leads, products,
+quotas and an inbox. Everything is generated from a fixed seed and dated
+relative to today. The admin who loads it owns a real slice of the work. Seed
+code: `apps/crm/src/seed/*`, endpoint `seedWorkspace`; removal:
+`packages/shared/server/demo.ts`, endpoint `clearDemoData`.
 
 ---
 
@@ -42,10 +46,14 @@ Start your own server on **your assigned port** (never another agent's):
 ```bash
 cd apps/crm                       # or apps/crm-pages
 REVIEW_PORT=<your port> npx vite --config vite.review.config.ts > $H/<you>-vite.log 2>&1   # run_in_background: true
-# then seed (staff app only; the public app reads the same in-memory DB per server)
+# then load the sample (staff app only; the public app reads the same in-memory DB per server)
 curl -s -X POST http://127.0.0.1:<port>/api/bootstrap -H 'content-type: application/json' -d '{"inputs":{}}' > /dev/null
-for i in 1 2 3 4 5; do curl -s -X POST http://127.0.0.1:<port>/api/seedWorkspace -H 'content-type: application/json' -d '{"inputs":{}}'; done
+curl -s -X POST http://127.0.0.1:<port>/api/seedWorkspace -H 'content-type: application/json' -d '{"inputs":{}}'
 ```
+
+One call loads it all locally. On a slow server it returns `done: false` with a
+`seededAt` and a `phase`; carry on with `{"inputs":{"resume":{"seededAt":…,"phase":…}}}`
+until `done`. A second call without `resume` is refused once the sample is loaded.
 
 The DB is in memory: restarting the server resets it, so reseed. The signed-in
 user is the `review_user` cookie (default `dominic@fillout.com`, an Admin). Test

@@ -43,10 +43,11 @@ Two apps share one database:
 | **CRM** | `apps/crm` | The sales team: admins, managers, reps and read-only viewers | Internal (organization members) |
 | **CRM Pages** | `apps/crm-pages` | Prospects and customers: web forms, meeting booking, quotes, unsubscribe | External (public) |
 
-It opens on a populated demo: Ashgrove Software, with 36 companies, ~80
-contacts, 50 deals across two pipelines and six months of activity, so every
-screen has something in it the first time you look. Settings has a one-click way
-to delete all of it.
+A fresh install opens empty, with a starter pipeline and pick lists ready for
+your own records. To see it with work in it first, an admin can load a sample
+organization from the bottom of **Settings → General**: Ashgrove Software, with
+36 companies, about 60 contacts, about 70 deals across two pipelines and six
+months of activity. **Settings → Sample data** removes it again.
 
 <p align="center">
   <img alt="The deal board, with pipeline totals, weighted forecast and stalled warnings" src=".github/assets/deals.png">
@@ -85,23 +86,31 @@ to delete all of it.
 - **Automations.** "when this happens, do that" rules over deals, leads,
   forms, meetings and quotes, with a run log.
 - **Admin.** teammates and roles, teams, pipelines and stages, custom fields,
-  pick lists and tags, lead routing, CSV import with undo, export, and a
-  one-click removal of the demo data.
+  pick lists and tags, lead routing, CSV import with undo, export, and sample
+  data you can load into an empty workspace and remove again.
 - **AI assists** (optional). A written brief on where a deal stands, email
   drafts, and follow-up tasks pulled out of meeting notes. Every one of them
   falls back to a non-AI version when no Anthropic connection is attached.
 
-## The demo organization
+## Sample data
 
-Opening the app for the first time seeds **Ashgrove Software**, a B2B software
-seller in Portland: 36 companies, ~80 contacts, 50 deals across two pipelines,
-six months of activity, tasks, leads, quotes, sequences, meeting links and
-reports. Everything is generated from a fixed seed and dated relative to today,
-and whoever installs the template becomes the Admin with a real slice of the
-work assigned to them.
+Nothing is loaded automatically. The first person to open a fresh install
+becomes its Admin and lands in an empty CRM with a starter "Sales" pipeline and
+the standard lost, disqualify and lead-source lists, so the first deal can be
+created straight away.
 
-**Settings → Data → Remove demo data** deletes all of it when a real team is
-ready to start, keeping anything they have added themselves.
+While the workspace has no companies, contacts, deals or leads of its own, the
+bottom of **Settings → General** offers to load **Ashgrove Software**, a B2B software
+seller in Portland: 36 companies, about 60 contacts, about 70 deals across two
+pipelines, six months of activity, tasks, leads, quotes, sequences, meeting
+links and reports. Everything is generated from a fixed seed and dated relative
+to today, and the admin who loads it is given a real slice of the work. It
+never overwrites an organization name, address or footer you have already set.
+
+**Settings → Sample data → Remove sample data** (in the nav only while the
+sample is loaded) deletes all of it when a real team is ready to start. It keeps everything that was there before the sample
+was loaded and anything added since, and once the workspace is empty again the
+sample can be loaded again.
 
 ## Install it in your own workspace
 
@@ -135,9 +144,11 @@ claude mcp add --transport http zite https://mcp.zite.com/mcp
 >    resolves.
 > 6. `check_app` both apps, `commit`, then `publish_app` both.
 
-**3. Open the CRM.** It seeds the demo on first load. When you are ready for real
-data, go to **Settings → Data → Remove demo data**, which deletes everything the
-seed created and keeps anything you have added since.
+**3. Open the CRM.** It opens empty, and you are its Admin. To look around with
+records in it first, load the sample organization from the bottom of
+**Settings → General**; when you are ready for real data, remove it from
+**Settings → Sample data**, which deletes everything the sample created and
+keeps anything you have added.
 
 ---
 

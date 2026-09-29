@@ -374,7 +374,12 @@ export const seedEnrollments: SeedPhase = {
     const existing = await zite.enrollments.findAll({ limit: 1 });
     if (existing.records.length) return;
 
-    const { rows: sequenceRows } = await zite.sql({ query: `SELECT id, "name", "ownerId", "steps", "settings" FROM "Sequences" ORDER BY created_at LIMIT 10`, params: [] });
+    // Only the sample's own sequences: one the admin wrote before loading it must not fill up with sample contacts.
+    const names = SEQUENCES.map(s => s.name);
+    const { rows: sequenceRows } = await zite.sql({
+      query: `SELECT id, "name", "ownerId", "steps", "settings" FROM "Sequences" WHERE "name" IN (${names.map((_, i) => `$${i + 1}`).join(', ')}) ORDER BY created_at LIMIT 10`,
+      params: names,
+    });
     if (!sequenceRows.length) return;
     const sequences = sequenceRows.map(r => ({
       id: String(r.id),

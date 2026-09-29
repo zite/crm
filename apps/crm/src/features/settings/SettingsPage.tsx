@@ -41,7 +41,7 @@ export function SettingsPage() {
   const current = sectionFor(section);
   useDocumentTitle(current ? `${current.label} · Settings` : 'Settings', ws.settings.organizationName);
 
-  const visible = SECTIONS.filter(s => !s.capability || ws.can(s.capability));
+  const visible = SECTIONS.filter(s => (!s.capability || ws.can(s.capability)) && (!s.shownWhen || s.shownWhen(ws) || s.slug === section));
   if (!section) return <Navigate to="/settings/profile" replace />;
   if (!current) return <Navigate to="/settings/profile" replace />;
 

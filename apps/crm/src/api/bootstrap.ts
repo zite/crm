@@ -4,7 +4,9 @@ import { zite } from 'zitejs/db';
 import { capabilitiesFor, getActor } from '@project/shared/server/actor';
 import { loadFieldDefs } from '@project/shared/server/customFields';
 import { loadPipelines } from '@project/shared/server/deals';
-import { getSettings } from '@project/shared/server/settings';
+import { hasOwnRecords, sampleLoaded } from '@project/shared/server/demo';
+import { getSettings, updateSettings } from '@project/shared/server/settings';
+import { ensureStartingPoint } from '@project/shared/server/starter';
 import { bool, iso, json, num, ref, str } from '@project/shared/server/sql';
 import { todayIn } from '@project/shared/dates';
 import { parseInput } from '../server/input';
@@ -13,6 +15,12 @@ import { parseInput } from '../server/input';
  * Everything the app needs before the first screen: who you are, the org,
  * teammates, pipelines and stages, pick lists, tags, custom fields, saved
  * views, and the counts in the top bar. Records themselves load per page.
+ *
+ * A fresh install has none of it yet. The first call makes the Settings row
+ * and the first person's Admin record (getSettings, getActor), and a starter
+ * pipeline and pick lists when there are no pipelines at all, so a new admin
+ * can create a deal straight away. Pipelines are archived, never deleted, so
+ * that only happens once.
  */
 
 const member = z.object({
@@ -66,7 +74,8 @@ export default createEndpoint({
     counts: z.object({ unread: z.number(), newLeads: z.number(), myOpenLeads: z.number(), tasksDue: z.number(), overdue: z.number() }),
     integrations: z.object({ ai: z.boolean(), email: z.boolean() }),
     today: z.string(),
-    needsSeed: z.boolean(),
+    /** Settings → Sample data: remove the sample while it is loaded, load it while the workspace is still empty. */
+    sample: z.object({ loaded: z.boolean(), canLoad: z.boolean() }),
   }),
   execute: async ({ input, context }) => {
     const parsed = parseInput(z.object({ today: z.string().optional() }), input);
@@ -74,11 +83,13 @@ export default createEndpoint({
     const settings = await getSettings();
     const today = parsed.today && /^\d{4}-\d{2}-\d{2}$/.test(parsed.today) ? parsed.today : todayIn(settings.timezone);
 
-    const [membersRes, teamsRes, pipes, choicesRes, tagsRes, fields, viewsRes, countsRes] = await Promise.all([
+    const loadChoices = () => zite.sql({ query: `SELECT id, "label", "list", "position", "archived" FROM "Choices" ORDER BY "list", COALESCE("position", 0), "label"`, params: [] });
+    const loaded = sampleLoaded(settings);
+    const [membersRes, teamsRes, firstPipes, firstChoices, tagsRes, fields, viewsRes, countsRes, ownRecords] = await Promise.all([
       zite.sql({ query: `SELECT * FROM "Members" ORDER BY CASE WHEN "status" = 'Deactivated' THEN 1 ELSE 0 END, "name"`, params: [] }),
       zite.sql({ query: `SELECT id, "name", "description", "leadId", "color" FROM "Teams" ORDER BY "name"`, params: [] }),
       loadPipelines(),
-      zite.sql({ query: `SELECT id, "label", "list", "position", "archived" FROM "Choices" ORDER BY "list", COALESCE("position", 0), "label"`, params: [] }),
+      loadChoices(),
       zite.sql({ query: `SELECT id, "name", "color", "description" FROM "Tags" ORDER BY "name"`, params: [] }),
       loadFieldDefs(undefined, true),
       zite.sql({ query: `SELECT id, "name", "scope", "config", "ownerId", "shared", "position" FROM "Views" WHERE "ownerId" = $1 OR COALESCE("shared", false) = true ORDER BY COALESCE("position", 0), created_at`, params: [actor.id] }),
@@ -91,7 +102,22 @@ export default createEndpoint({
           (SELECT COUNT(*) FROM "Tasks" WHERE "ownerId" = $1 AND "status" = 'Open' AND "dueDate" < $2::date) AS "overdueTotal"`,
         params: [actor.id, today],
       }),
+      // Only needed to decide whether the sample can be loaded, which it can't while it is.
+      loaded ? Promise.resolve(true) : hasOwnRecords(),
     ]);
+
+    let pipes = firstPipes;
+    let choicesRes = firstChoices;
+    if (!pipes.pipelines.length) {
+      await ensureStartingPoint();
+      [pipes, choicesRes] = await Promise.all([loadPipelines(), loadChoices()]);
+      // Round robin with nobody in the rotation is an error on Settings → Lead
+      // routing, so the first admin starts as the whole rotation.
+      if (actor.role === 'Admin' && !settings.leadRouting.memberIds.length) {
+        settings.leadRouting = { ...settings.leadRouting, memberIds: [actor.id] };
+        await updateSettings(settings.id, { leadRouting: settings.leadRouting });
+      }
+    }
 
     const toMember = (r: Record<string, unknown>) => ({
       id: String(r.id),
@@ -149,7 +175,7 @@ export default createEndpoint({
       },
       integrations: { ai: Boolean(process.env.ZITE_ANTHROPIC_ACCESS_TOKEN), email: true },
       today,
-      needsSeed: pipes.pipelines.length === 0 && !settings.demoRemovedAt,
+      sample: { loaded, canLoad: !loaded && !ownRecords },
     };
   },
 });
