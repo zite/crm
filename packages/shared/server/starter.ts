@@ -1,4 +1,5 @@
 import { zite } from 'zitejs/db';
+import { isDemo } from './demoPreview';
 import { num, withRetry } from './sql';
 
 /**
@@ -12,6 +13,7 @@ import { num, withRetry } from './sql';
  * again changes nothing.
  */
 export async function ensureStartingPoint() {
+  if (isDemo()) return;
   const { rows: pipes } = await zite.sql({ query: `SELECT COUNT(*) AS "n" FROM "Pipelines"`, params: [] });
   if (num(pipes[0]?.n) === 0) {
     const pipeline = await withRetry(() => zite.pipelines.create({ record: { name: 'Sales', description: 'Your first pipeline. Rename its stages to match how you sell.', position: 0, isDefault: true, archived: false } }));

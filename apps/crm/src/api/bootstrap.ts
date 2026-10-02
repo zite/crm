@@ -5,6 +5,7 @@ import { capabilitiesFor, getActor } from '@project/shared/server/actor';
 import { loadFieldDefs } from '@project/shared/server/customFields';
 import { loadPipelines } from '@project/shared/server/deals';
 import { hasOwnRecords, sampleLoaded } from '@project/shared/server/demo';
+import { isDemo } from '@project/shared/server/demoPreview';
 import { getSettings, updateSettings } from '@project/shared/server/settings';
 import { ensureStartingPoint } from '@project/shared/server/starter';
 import { bool, iso, json, num, ref, str } from '@project/shared/server/sql';
@@ -113,7 +114,7 @@ export default createEndpoint({
       [pipes, choicesRes] = await Promise.all([loadPipelines(), loadChoices()]);
       // Round robin with nobody in the rotation is an error on Settings → Lead
       // routing, so the first admin starts as the whole rotation.
-      if (actor.role === 'Admin' && !settings.leadRouting.memberIds.length) {
+      if (actor.role === 'Admin' && !settings.leadRouting.memberIds.length && !isDemo(context)) {
         settings.leadRouting = { ...settings.leadRouting, memberIds: [actor.id] };
         await updateSettings(settings.id, { leadRouting: settings.leadRouting });
       }

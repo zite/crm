@@ -1,6 +1,7 @@
 import { zite } from 'zitejs/db';
 import { includes, ROLES, type Role } from '../constants';
 import { isValidTimezone } from '../dates';
+import { isDemo } from './demoPreview';
 import { json, num, str } from './sql';
 
 /**
@@ -103,19 +104,20 @@ function toSettings(r: Record<string, unknown>): OrgSettings {
 export async function getSettings(): Promise<OrgSettings> {
   const { rows } = await zite.sql({ query: `SELECT * FROM "Settings" ORDER BY created_at ASC LIMIT 1`, params: [] });
   if (rows[0]) return toSettings(rows[0]);
-  const created = await zite.settings.create({
-    record: {
-      organizationName: 'Your organization',
-      currency: 'USD',
-      timezone: 'America/New_York',
-      fiscalYearStartMonth: 1,
-      defaultRole: 'Rep',
-      nextQuoteNumber: 1001,
-      leadRouting: JSON.stringify({ mode: 'round_robin', memberIds: [], memberId: null, cursor: 0 }),
-      quoteDefaults: JSON.stringify(DEFAULT_QUOTE_DEFAULTS),
-      preferences: JSON.stringify(DEFAULT_PREFERENCES),
-    },
-  });
+  const record = {
+    organizationName: 'Your organization',
+    currency: 'USD',
+    timezone: 'America/New_York',
+    fiscalYearStartMonth: 1,
+    defaultRole: 'Rep',
+    nextQuoteNumber: 1001,
+    leadRouting: JSON.stringify({ mode: 'round_robin', memberIds: [], memberId: null, cursor: 0 }),
+    quoteDefaults: JSON.stringify(DEFAULT_QUOTE_DEFAULTS),
+    preferences: JSON.stringify(DEFAULT_PREFERENCES),
+  };
+  // The demo's database is read-only and refuses the whole request on any write.
+  if (isDemo()) return toSettings({ id: '00000000-0000-0000-0000-000000000000', ...record });
+  const created = await zite.settings.create({ record });
   return toSettings(created as unknown as Record<string, unknown>);
 }
 

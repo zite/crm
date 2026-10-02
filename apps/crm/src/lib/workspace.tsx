@@ -30,6 +30,7 @@ export function useWorkspaceQuery() {
     queryKey: WORKSPACE_KEY,
     queryFn: () => bootstrap({ today: todayString() }),
     staleTime: 60_000,
+    retry: (count, error) => count < 2 && !/\b4\d\d\b|FORBIDDEN|DEMO_READ_ONLY/.test(String((error as Error)?.message)),
   });
 }
 

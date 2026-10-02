@@ -1,5 +1,6 @@
 import { z } from 'zod';
 import { createEndpoint } from 'zitejs/backend';
+import { isDemo } from '@project/shared/server/demoPreview';
 import { getSettings, updateSettings } from '@project/shared/server/settings';
 import { parseInput } from '../server/input';
 
@@ -27,7 +28,7 @@ export default createEndpoint({
   execute: async ({ input }) => {
     const { pagesUrl } = parseInput(inputSchema, input);
     const settings = await getSettings();
-    if (pagesUrl && /^https?:\/\/[^\s]+$/i.test(pagesUrl) && pagesUrl.replace(/\/+$/, '') !== (settings.pagesUrl ?? '')) {
+    if (pagesUrl && !isDemo() && /^https?:\/\/[^\s]+$/i.test(pagesUrl) && pagesUrl.replace(/\/+$/, '') !== (settings.pagesUrl ?? '')) {
       await updateSettings(settings.id, { pagesUrl: pagesUrl.replace(/\/+$/, '') }).catch(() => undefined);
     }
     return {

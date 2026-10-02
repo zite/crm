@@ -1,6 +1,7 @@
 import { z } from 'zod';
 import { createEndpoint, ZiteError } from 'zitejs/backend';
 import { zite } from 'zitejs/db';
+import { isDemo } from '@project/shared/server/demoPreview';
 import { logEvent } from '@project/shared/server/events';
 import { notify } from '@project/shared/server/notify';
 import { getSettings } from '@project/shared/server/settings';
@@ -115,7 +116,7 @@ export default createEndpoint({
     const totals = quoteTotals(items.map(i => i.line), taxRate);
 
     // First open: the rep should hear about it, and only once.
-    if ((stored === 'Sent' || stored === 'Viewed') && !lapsed) {
+    if ((stored === 'Sent' || stored === 'Viewed') && !lapsed && !isDemo()) {
       const firstView = stored === 'Sent' && !q.viewedAt;
       const now = new Date().toISOString();
       await withRetry(() =>
